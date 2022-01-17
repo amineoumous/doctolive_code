@@ -1,0 +1,26 @@
+{
+  "name": "teleconsultation",
+  "homepage": "https://pro.doctolive.ma",
+  "authors": [
+    "ROUHI Adnane"
+  ],
+  "description": "application de géstion de cabinet médicalle et prise de rendez-vous ainsi que la téléconsultation",
+  "main": "public/index.html",
+  "keywords": [
+    "téléconsultation",
+    "médecin",
+    "rendez-vous",
+    "rendez-vous en ligne",
+    "calendrier"
+  ],
+  "license": "PELUX",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "build"
+  ],
+  "private": true
+}

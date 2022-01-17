@@ -1,0 +1,45 @@
+{
+  "name": "static-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3010",
+    "build": "next build",
+    "start": "next start",
+    "zip": "zip -r build.zip .next",
+    "push": "scp build.zip root@134.122.127.223:/var/www/doctolive.ma/patient-session",
+    "build:svg": "svgr -d ./assets/icons/svgr ./assets/icons/svg --icon --ignore-existing --svg-props fill=\"currentColor\"",
+    "export": "next export",
+    "deploy": "zip -r build.zip .next && scp build.zip root@134.122.127.223:/var/www/doctolive.ma/patient-session"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@react-google-maps/api": "^2.1.1",
+    "axios": "^0.21.1",
+    "babel-preset-es2015": "^6.24.1",
+    "bootstrap": "^4.6.0",
+    "install": "^0.13.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "js-cookie": "^2.2.1",
+    "jss-rtl": "^0.3.0",
+    "moment": "^2.29.1",
+    "next": "10.0.6",
+    "pm": "^2.2.6",
+    "react": "17.0.1",
+    "react-autobind": "^1.0.6",
+    "react-bootstrap": "^1.4.3",
+    "react-dom": "17.0.1",
+    "react-dropzone": "^11.3.1",
+    "react-icons": "^4.2.0",
+    "react-phone-number-input": "^3.1.15",
+    "react-transition-group": "^4.4.1",
+    "simple-peer": "^9.10.0",
+    "socket.io-client": "^3.1.3"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
+  }
+}

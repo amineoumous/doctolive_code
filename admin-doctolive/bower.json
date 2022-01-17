@@ -1,0 +1,20 @@
+{
+  "name": "Yobal-admin-panel",
+  "homepage": "https://admin.yobal.com/",
+  "authors": [
+    "spirituelle"
+  ],
+  "description": "Gestion des différent aspect de l'application",
+  "main": "public/index.html",
+  "keywords": ["yobal", "admin"],
+  "license": "PELUX SARL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "build"
+  ],
+  "private": true
+}

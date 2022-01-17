@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="63" viewBox="0 0 68 63">
+  <defs>
+    <polygon id="rv-a" points="0 61.786 67.529 61.786 67.529 0 0 0"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(0 .43)">
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M14.137725 33.1914067L14.137725 8.56560884C14.137725 6.8035657 15.569225 5.37523623 17.333225 5.37523623L23.752225 5.37523623M57.4767375 5.37497415L63.8957375 5.37497415C65.6614875 5.37497415 67.0912375 6.80330362 67.0912375 8.56534676L67.0912375 48.7568782C67.0912375 50.519795 65.6614875 51.9481244 63.8957375 51.9481244L23.8898625 51.9481244"/>
+    <line x1="28.996" x2="52.234" y1="5.375" y2="5.375" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M54.85515 10.4966928L54.85515 10.4966928C53.4079 10.4966928 52.23365 9.32520057 52.23365 7.87939918L52.23365 3.05452844C52.23365 1.60872705 53.4079.436361205 54.85515.436361205 56.303275.436361205 57.47665 1.60872705 57.47665 3.05452844L57.47665 7.87939918C57.47665 9.32520057 56.303275 10.4966928 54.85515 10.4966928zM26.374075 10.4966928L26.374075 10.4966928C24.926825 10.4966928 23.752575 9.32520057 23.752575 7.87939918L23.752575 3.05452844C23.752575 1.60872705 24.926825.436361205 26.374075.436361205 27.8222.436361205 28.995575 1.60872705 28.995575 3.05452844L28.995575 7.87939918C28.995575 9.32520057 27.8222 10.4966928 26.374075 10.4966928z"/>
+    <line x1="14.138" x2="67.092" y1="16.059" y2="16.059" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <mask id="rv-b" fill="#fff">
+      <use xlink:href="#rv-a"/>
+    </mask>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="50.774 30.903 58.937 30.903 58.937 22.752 50.774 22.752" mask="url(#rv-b)"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="36.533 30.903 44.696 30.903 44.696 22.752 36.533 22.752" mask="url(#rv-b)"/>
+    <polyline stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="22.292 42.059 22.292 37.273 30.456 37.273 30.456 45.423 23.26 45.423" mask="url(#rv-b)"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="50.774 45.423 58.937 45.423 58.937 37.272 50.774 37.272" mask="url(#rv-b)"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="36.533 45.423 44.696 45.423 44.696 37.272 36.533 37.272" mask="url(#rv-b)"/>
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12.432175,42.3535069 L24.459925,30.3441826 C25.492425,29.3150865 25.492425,27.6447709 24.459925,26.6148012 C23.4283,25.5857051 21.756175,25.5857051 20.725425,26.6148012 L8.428175,38.8923195 L9.607675,34.4946372 C9.985675,33.0881476 9.15005,31.6414726 7.7413,31.2649528 C6.331675,30.8875593 4.88355,31.7227171 4.50555,33.1292066 L1.2558,45.2407417 C0.353675,49.1911428 -0.31745,51.4537565 2.147425,53.9146764 C4.6123,56.37647 7.850675,59.6079016 7.850675,59.6079016 C7.850675,59.6079016 9.593675,61.3987734 11.884425,61.3489784 C14.175175,61.2991835 15.121925,60.7025174 16.56655,59.2602104 C18.0103,57.8179034 22.221675,53.6132858 22.221675,53.6132858 L25.194925,50.6456802 C26.164425,49.6768622 26.164425,48.1070102 25.194925,47.1399394 C24.225425,46.171995 22.653925,46.171995 21.68355,47.1399394" mask="url(#rv-b)"/>
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M17.0370375,37.7560332 C18.0065375,36.7880888 19.5780375,36.7880888 20.5484125,37.7560332 C21.5179125,38.7239775 21.5179125,40.2938296 20.5484125,41.2617739 L16.8392875,44.9640738" mask="url(#rv-b)"/>
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M19.3398625,42.4686468 C20.3084875,41.5007024 21.8808625,41.5007024 22.8512375,42.4686468 C23.8207375,43.4365912 23.8207375,45.0064432 22.8512375,45.9743876 L19.8779875,48.9419932" mask="url(#rv-b)"/>
+    <line x1="25.131" x2="25.131" y1="19.255" y2="22.819" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" mask="url(#rv-b)"/>
+    <line x1="31.938" x2="28.37" y1="26.052" y2="26.052" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" mask="url(#rv-b)"/>
+    <line x1="29.668" x2="27.145" y1="21.522" y2="24.042" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" mask="url(#rv-b)"/>
+    <line x1="20.81" x2="23.333" y1="21.737" y2="24.256" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" mask="url(#rv-b)"/>
+    <line x1="26.929" x2="29.454" y1="27.847" y2="30.366" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" mask="url(#rv-b)"/>
+  </g>
+</svg>

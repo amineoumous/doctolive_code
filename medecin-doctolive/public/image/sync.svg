@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="71" height="63" viewBox="0 0 71 63">
+  <g fill="none" fill-rule="evenodd" transform="translate(.887 .43)">
+    <path stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3.5751625,11.142455 L3.5751625,4.67522375 C3.5751625,2.33398645 5.4756625,0.436535924 7.8206625,0.436535924 L64.3351625,0.436535924 C66.6792875,0.436535924 68.5797875,2.33398645 68.5797875,4.67522375 L68.5797875,47.4097932 C68.5797875,49.7501569 66.6792875,51.6476074 64.3351625,51.6476074 L7.8206625,51.6476074 C5.4756625,51.6476074 3.5751625,49.7501569 3.5751625,47.4097932 L3.5751625,36.6610679"/>
+    <line x1="3.575" x2="68.58" y1="42.479" y2="42.479" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <line x1="23.113" x2="49.042" y1="61.491" y2="61.491" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <line x1="29.69" x2="27.097" y1="51.648" y2="61.491" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <line x1="42.466" x2="45.058" y1="51.648" y2="61.491" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <path stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M24.18465,11.142455 L27.70215,11.142455 C28.669025,11.142455 29.453025,11.925197 29.453025,12.8905206 L29.453025,34.9130023 C29.453025,35.8783259 28.669025,36.6610679 27.70215,36.6610679 L2.1889,36.6610679 C1.22115,36.6610679 0.43715,35.8783259 0.43715,34.9130023 L0.43715,12.8905206 C0.43715,11.925197 1.22115,11.142455 2.1889,11.142455 L5.705525,11.142455"/>
+    <line x1="8.579" x2="21.312" y1="11.142" y2="11.142" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <path stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M22.7478125 13.9492316L22.7478125 13.9492316C21.9541875 13.9492316 21.3110625 13.3071385 21.3110625 12.5147869L21.3110625 9.87128543C21.3110625 9.07893386 21.9541875 8.43684079 22.7478125 8.43684079 23.5414375 8.43684079 24.1845625 9.07893386 24.1845625 9.87128543L24.1845625 12.5147869C24.1845625 13.3071385 23.5414375 13.9492316 22.7478125 13.9492316zM7.142275 13.9492316L7.142275 13.9492316C6.34865 13.9492316 5.705525 13.3071385 5.705525 12.5147869L5.705525 9.87128543C5.705525 9.07893386 6.34865 8.43684079 7.142275 8.43684079 7.9359 8.43684079 8.579025 9.07893386 8.579025 9.87128543L8.579025 12.5147869C8.579025 13.3071385 7.9359 13.9492316 7.142275 13.9492316z"/>
+    <line x1=".438" x2="29.453" y1="16.997" y2="16.997" stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="20.512 25.13 24.985 25.13 24.985 20.664 20.512 20.664"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="12.709 25.13 17.181 25.13 17.181 20.664 12.709 20.664"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="4.906 25.13 9.379 25.13 9.379 20.664 4.906 20.664"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="4.905 33.086 9.378 33.086 9.378 28.62 4.905 28.62"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="20.512 33.086 24.985 33.086 24.985 28.62 20.512 28.62"/>
+    <polygon stroke="#1ab9b9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="12.709 33.086 17.181 33.086 17.181 28.62 12.709 28.62"/>
+    <line x1="33.828" x2="44.933" y1="23.902" y2="23.902" stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <polyline stroke="#2571AD" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" points="41.839 20.313 45.434 23.902 41.839 27.49"/>
+    <path fill="#1ab9b9" d="M60.91925,23.9021109 C60.91925,26.9649385 58.431625,29.4485719 55.363875,29.4485719 C52.296125,29.4485719 49.8085,26.9649385 49.8085,23.9021109 C49.8085,20.8392833 52.296125,18.3556498 55.363875,18.3556498 C58.431625,18.3556498 60.91925,20.8392833 60.91925,23.9021109 Z"/>
+    <line x1="55.364" x2="55.364" y1="21.098" y2="26.705" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    <line x1="52.556" x2="58.172" y1="23.902" y2="23.902" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+{
+  "name": "static-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "build:out": "next build && next export",
+    "start": "next start -p 4000",
+    "build:svg": "svgr -d ./assets/icons/svgr ./assets/icons/svg --icon --svg-props fill=\"currentColor\"",
+    "export": "next export",
+    "push": "scp build.zip root@134.122.127.223:/var/www/doctolive.ma/medecin-public"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "next": "10.0.6",
+    "next-images": "^1.7.0",
+    "react": "17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "react-dom": "17.0.1",
+    "react-icons": "^4.2.0"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0"
+  }
+}

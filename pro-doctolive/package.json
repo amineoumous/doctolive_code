@@ -1,0 +1,96 @@
+{
+  "name": "teleconsultation",
+  "version": "0.1.0",
+  "description": "Application de géstion de cabinet médicalle et prise de rendez-vous ainsi que la téléconsultation",
+  "private": false,
+  "main": "dist/index.js",
+  "dependencies": {
+    "@date-io/moment": "^1.3.13",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
+    "@reach/combobox": "^0.13.2",
+    "@react-google-maps/api": "^2.1.1",
+    "@types/googlemaps": "3.39.6",
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.12.2",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "chartist": "0.10.1",
+    "classnames": "2.2.6",
+    "history": "4.10.1",
+    "js-cookie": "^2.2.1",
+    "moment": "^2.29.1",
+    "perfect-scrollbar": "1.5.0",
+    "prop-types": "15.7.2",
+    "rc-color-picker": "^1.2.6",
+    "react": "16.13.1",
+    "react-autobind": "^1.0.6",
+    "react-big-calendar": "^0.30.0",
+    "react-bootstrap": "^1.4.0",
+    "react-chartist": "0.14.3",
+    "react-controllables": "^0.6.0",
+    "react-dom": "16.13.1",
+    "react-dropzone": "^11.3.1",
+    "react-fancybox": "^0.2.5",
+    "react-icons": "^4.1.0",
+    "react-number-format": "^4.4.1",
+    "react-phone-input-2": "^2.13.9",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.1",
+    "react-sticky-box": "^0.9.3",
+    "react-swipeable-views": "0.13.9",
+    "react-text-mask": "^5.4.3",
+    "react-transition-group": "^4.4.1",
+    "simple-peer": "^9.10.0",
+    "socket.io-client": "^3.1.3",
+    "typescript": "3.9.3",
+    "universal-cookie": "^4.0.4",
+    "use-places-autocomplete": "^1.9.1"
+  },
+  "scripts": {
+    "build:svg": "svgr -d src/assets/icons src/assets/img/svgs --icon --svg-props fill=\"currentColor\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "ROUHI ADNANE",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://pro.doctolive.ma",
+  "optionalDependencies": {
+    "@types/googlemaps": "3.39.6",
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.12.2",
+    "typescript": "3.9.3"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0",
+    "@svgr/webpack": "^4.3.3",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "prettier": "2.0.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": []
+  }
+}

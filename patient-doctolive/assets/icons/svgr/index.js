@@ -1,0 +1,8 @@
+export { default as BgHome } from './BgHome'
+export { default as AboutBackgrounfd } from './AboutBackgrounfd'
+export { default as Certification } from './Certification'
+export { default as Clock } from './Clock'
+export { default as ContactBanner } from './ContactBanner'
+export { default as Experience } from './Experience'
+export { default as Money } from './Money'
+export { default as User } from './User'
