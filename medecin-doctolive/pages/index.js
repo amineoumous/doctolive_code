@@ -220,7 +220,7 @@ function Header (){
     const classes = useStyles();
 
     return (
-        <header className= {classes.header} style={{backgroundImage: `linear-gradient(180deg, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5)), url(image/slider-bg.jpeg)`}}>
+        <header className= {classes.header} style={{backgroundImage: `linear-gradient(180deg, hsla(0, 0%, 100%, 0.25), hsla(0, 0%, 100%, 0.25)), url(image/slider-bg.jpeg)`}}>
             
             <Container > 
                 <Row>
