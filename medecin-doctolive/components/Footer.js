@@ -101,7 +101,7 @@ export default function DivFooter(){
                         </Col>
                     </Row>
                     <Row className="justify-content-center text-center mt-1">
-                            <p className="pelux"> POWRED BY <a href="https://pelux.ma/"> pelux.ma </a> </p>
+                            <p className="doctolive"> POWRED BY <a href="https://doctolive.ma/"> DOCTOLIVE.MA </a> </p>
                     </Row>
                 </div>
             </div>
