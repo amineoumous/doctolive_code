@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -13,7 +14,7 @@ html * {
     background-color: #fff !important;
     color: #3c4858;
     margin: 0;
-    font-family: Barlow, sans-serif !important;
+    font-family: Roboto, sans-serif !important;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
@@ -408,9 +409,22 @@ main{
   padding: 0 .9375em;
   margin: 0 auto 30px;
 }
-.section-home-how-works .hw-box .hw-box__title, .h1, .h3 {
+.section-home-how-works .hw-box .hw-box__title, .h3 {
   color: #fff;
   -webkit-text-fill-color: #fff;
+}
+@media (min-width: 768px){
+.h1 {
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 40px;
+}}
+.h1{
+  font-family: Montserrat,"sans-serif";
+  color: #0D2339;
+  -webkit-text-fill-color: #0D2339;
+  font-style: normal;
+  font-weight: 700;
 }
 .section-home-how-works .hw-box .hw-box__text {
   text-align: center;
