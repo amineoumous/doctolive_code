@@ -1,9 +1,9 @@
 
 module.exports = {
-  i18n: {
-    locales: ['en', 'fr', 'ar'],
-    defaultLocale: 'fr',
-  },
+  // i18n: {
+  //   locales: ['en', 'fr', 'ar'],
+  //   defaultLocale: 'fr',
+  // },
   
   webpack(config, options) {
     const { isServer } = options;

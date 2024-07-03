@@ -11,6 +11,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
+import ProfileIcon from 'assets/img/icon-profile.svg'
+import PoleIcon from 'assets/img/icon-pole.svg'
 // core components
 
 import styles from "assets/jss/components/sidebarStyle.js";
@@ -19,7 +21,7 @@ import { BsCircleFill } from 'react-icons/bs';
 import medecinImage from "assets/img/medecin/homme.jpg";
 import { useAuth } from "context/Auth";
 
-import VideoChatIcon from 'assets/img/nav-icon/customer-service.svg'
+import VideoChatIcon from 'assets/img/consultation.svg'
 const useStyles = makeStyles(styles);
 
 export default function Sidebar(props) {
@@ -35,7 +37,28 @@ export default function Sidebar(props) {
   
   var links = (
     <List className={classes.list}>
+     <NavLink
+            to={"/Profil"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"profil"}
+          >
+            <ListItem button className={classes.itemLink +" sidebar-color"}>
+                <img src={ProfileIcon} alt={"Profile"}
+                className={classNames(classes.itemIcon, {
+                  [classes.itemIconRTL]: props.rtlActive
+                })}
+              />
+            
+              <ListItemText
+                primary={"Profile"}
+                className={classNames(classes.itemText) +" item-txt"}
+                disableTypography={true}
+              />
+            </ListItem>
+          </NavLink>
       {routes.map((prop, key) => {
+        if(prop.path!="/pole"){
         var activePro = " ";
         var listItemClasses;
         listItemClasses = classNames({
@@ -45,15 +68,16 @@ export default function Sidebar(props) {
         const whiteFontClasses = classNames({
           [" " + classes.whiteFont]: activeRoute(prop.path)
         });
-
+     
         return (
+          
           <NavLink
             to={prop.path}
             className={activePro + classes.item}
             activeClassName="active"
             key={key}
           >
-            <ListItem button className={classes.itemLink + listItemClasses}>
+            <ListItem button className={classes.itemLink + listItemClasses+" sidebar-color"}>
               {typeof prop.icon === "string" ? (
                 <img src={prop.icon} alt={prop.name}
                 className={classNames(classes.itemIcon, whiteFontClasses, {
@@ -73,13 +97,14 @@ export default function Sidebar(props) {
                 primary={ prop.name}
                 className={classNames(classes.itemText, whiteFontClasses, {
                   [classes.itemTextRTL]: props.rtlActive
-                })}
+                }) +" item-txt"}
                 disableTypography={true}
               />
             </ListItem>
           </NavLink>
           
         );
+        }
       })}
       <NavLink
             to={"/chat-video"}
@@ -87,16 +112,37 @@ export default function Sidebar(props) {
             activeClassName="active"
             key={"chat"}
           >
-            <ListItem button className={classes.itemLink}>
-                <img src={VideoChatIcon} alt={"consultation video"}
+            <ListItem button className={classes.itemLink +" sidebar-color"}>
+                <img src={VideoChatIcon} alt={"Consultation"}
                 className={classNames(classes.itemIcon, {
                   [classes.itemIconRTL]: props.rtlActive
                 })}
               />
             
               <ListItemText
-                primary={"consultation video"}
-                className={classNames(classes.itemText)}
+                primary={"Consultation"}
+                className={classNames(classes.itemText) +" item-txt"}
+                disableTypography={true}
+              />
+            </ListItem>
+          </NavLink>
+
+          <NavLink
+            to={"/pole"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"pole"}
+          >
+            <ListItem button className={classes.itemLink +" sidebar-color"}>
+                <img src={PoleIcon} alt={"Pôle emploi"}
+                className={classNames(classes.itemIcon, {
+                  [classes.itemIconRTL]: props.rtlActive
+                })}
+              />
+            
+              <ListItemText
+                primary={"Pôle emploi"}
+                className={classNames(classes.itemText) +" item-txt"}
                 disableTypography={true}
               />
             </ListItem>
@@ -108,60 +154,26 @@ export default function Sidebar(props) {
       <Link className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })} to="/dashboard">
-      <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
-        </div>
+     {"Acceuil"}
         </Link>
     </div>
   );
   return (
-    <div className="sidebar">
+    <div className="">
       <Hidden mdUp implementation="css">
-        <Drawer
-          variant="temporary"
-          anchor="left"
-          open={props.open}
-          classes={{
-            paper: classNames(classes.drawerPaper)
-          }}
-          onClose={props.handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true // Better open performance on mobile.
-          }}
-        >
-          {brand}
+   
+          {/* {brand} */}
           <div className={classes.sidebarWrapper}>
              {/* <AdminNavbarLinks /> */}
             {links}
           </div>
-         
-        </Drawer>
+      
       </Hidden>
       <Hidden smDown implementation="css">
-        <Drawer
-          anchor="right"
-          variant="permanent"
-          open
-          classes={{
-            paper: classNames(classes.drawerPaper)
-          }}
-        >
-          {brand}
-          <div className="profil">
-              <div className="w-50">   
-                  <BsCircleFill className="circle_online" />
-                  <img className="profile-img" src={medecinImage} alt="" />
-              </div>  
-             
-              <div className="ml-1">
-                <span>Bienvenue,</span>
-                <h5 className="upper"> Dr. {UserData.user.nom? UserData.user.prenom : ""}  </h5>  
-                <Link to="/profil"> voir le profil </Link>   
-              </div>
-          </div>
+        
           <div className={classes.sidebarWrapper}>{links}</div>
           
-        </Drawer>
+  
       </Hidden>
     </div>
   );

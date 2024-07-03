@@ -53,7 +53,7 @@ export default function Home() {
         </div>
         <Avantages />
         <Steps />
-        <Keep />
+        {/* <Keep /> */}
     </div>
   )
 }
@@ -67,7 +67,7 @@ function Avantages(){
         <section className={classes.section + " repeat-icon-box"}>
             <Container >
                 <Row>
-                  <h3 className={classes.sectionTitlle} >Pourquoi les professionnels de la santé aiment Doctolive</h3>
+                  <h3 className={classes.sectionTitlle} >Découvrez les avantages de Doctolive</h3>
                 </Row>
                     
                 <Row>
@@ -81,8 +81,8 @@ function Avantages(){
                                   <span> <img src ={ `/image/${whycard.icon}`} alt="..." className="mb-3" /> </span>
                               </div>
                               <div class="wrapper-content">
-                                <h4 class="title-t3 fw-700 mb-10 color-primary">{whycard.title}</h4>
-                                <p>{whycard.description}</p>
+                                <h4 class="title-t3">{whycard.title}</h4>
+                                <p class="wrapper-desc">{whycard.description}</p>
                               </div>
                           </div>
                         </Col>
@@ -109,21 +109,21 @@ function Steps (){
                   <div className="row">
                       <div className="columns col-sm-4">
                           <div className="hw-box hw-box--mt">
-                              <div className="hw-box__icon"><span className="icon-search"> <BiSearch /> </span></div>
+                              <div className="hw-box__icon"><span className="icon-search"> <BiSearch color='white' /> </span></div>
                               <h4 className="hw-box__title"> Rejoignez-nous </h4>
                               <p className="hw-box__text"> S'inscrire avec vos coordonnées sur la plateforme </p>
                           </div>
                       </div>
                       <div className="columns col-sm-4">
                           <div className="hw-box">
-                              <div className="hw-box__icon"> <span className="icon-svg va-middle-inline"> <BiCalendar /> </span> </div>
+                              <div className="hw-box__icon"> <span className="icon-svg va-middle-inline"> <BiCalendar color='white' /> </span> </div>
                               <h4 className="hw-box__title"> Vérification d'identité </h4>
                               <p className="hw-box__text"> Completez le processus de vérification avec nos consultant </p>
                           </div>
                       </div>
                       <div className="columns col-sm-4">
                           <div className="hw-box">
-                              <div className="hw-box__icon"><span className="icon-fat-check"><BiCheck /></span></div>
+                              <div className="hw-box__icon"><span className="icon-fat-check"><BiCheck color='white' /></span></div>
                               <h4 className="hw-box__title"> Consultez vos patient </h4>
                               <p className="hw-box__text">  Commencer à consulter en vidéo et gérez vos rendez-vous </p>
                           </div>
@@ -170,47 +170,47 @@ function Keep() {
 
 const whyCards = [
   {
-    icon: "waste.svg",
+    icon: "clock.png",
     title: "Ne perdez plus de temps à gérer la prise de rendez-vous",
     description: "Un système de réservation médicale en ligne avec de nombreuses fonctionnalités. Gérez votre cabinet avec une vue claire des rendez-vous à venir. Personnalisez tous les paramètres dont vous avez besoin.",
   },
   {
-    icon: "access.svg",
+    icon: "device.png",
     title: "Accédez à votre horaire médical où vous voulez, quand vous le souhaitez",
     description: "Notre logiciel de planification médicale est accessible depuis votre ordinateur, tablette ou smartphone. Vous pouvez vérifier les informations de votre pratique à tout moment, où que vous soyez.",
   },
   {
-    icon: "offer.svg",
+    icon: "offre.png",
     title: "Offrir la télémédecine et élargir l'accès aux services de santé pour les patients",
     description: "La consultation en ligne permet de maintenir la continuité des soins pour vos patients. Augmenter la distance sociale et délivrer des ordonnances aux patients à domicile.",
   },
   {
-    icon: "easier.svg",
+    icon: "device2.png",
     title: "Facilitez la prise de rendez-vous médicaux pour vos patients",
     description: "Vos patients peuvent prendre des rendez-vous 24h / 24 et 7j / 7, votre cabinet reçoit moins d'appels entrants et vous remplissez les créneaux disponibles même à la dernière minute.",
   },
   {
-    icon: "custimise.svg",
+    icon: "device3.png",
     title: "Personnalisez votre horaire de pratique en fonction de vos besoins",
     description: "Définissez chaque paramètre pour que votre système de réservation en ligne réponde à toutes vos attentes. Ouvrez les plages horaires disponibles et sélectionnez les raisons de la visite en fonction de votre spécialité.",
   },
   {
-    icon: "install.svg",
+    icon: "device4.png",
     title: "Installez et maîtrisez votre horaire médical en ligne en un rien de temps",
     description: "Notre équipe dédiée vous aide à mettre en place votre système de réservation médicale. Devenez un expert instantanément grâce à notre documentation complète.",
   },
   {
-    icon: "chat.svg",
+    icon: "device5.png",
     title: "Communiquez en temps réel avec vos patients et réduisez les rendez-vous manqués",
     description: "Laissez les patients réserver, annuler ou reporter leurs rendez-vous en ligne 24h / 24 et 7j / 7. Réduisez les rendez-vous manqués grâce aux rappels automatiques par e-mail.",
   },
   {
-    icon: "improve.svg",
+    icon: "device6.png",
     title: "Améliorez votre visibilité en ligne et trouvez de nouveaux patients",
     description: "Votre liste Doctolive permet aux patients de trouver facilement votre cabinet. Laissez les patients réserver leurs rendez-vous en ligne sur notre plateforme.",
   },
   {
-    icon: "sync.svg",
+    icon: "device7.png",
     title: "Synchronisez notre logiciel de planification des patients avec votre infrastructure",
     description: "Doctolive s'intègre immédiatement dans votre infrastructure existante. S'interface de manière transparente avec les applications de gestion de cabinet les plus courantes.",
   },
@@ -220,28 +220,31 @@ function Header (){
     const classes = useStyles();
 
     return (
-        <header className= {classes.header} style={{backgroundImage: `linear-gradient(180deg, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5)), url(image/slider-bg.jpeg)`}}>
+        <header className= {classes.header} style={{background: `rgba(182, 219, 215, 0.21)`}}>
             
             <Container > 
                 <Row>
-                    <Col md="6" className="d-flex flex-column justify-content-center left-content">
+                    <Col md="7" className="d-flex flex-column justify-content-center left-content">
                         <div >
                             <h1 className="h1">Consultez en ligne et développez votre pratique</h1>
-                            <h2 className="h3">Optimisez la gestion de votre cabinet médical avec un système de réservation en ligne facile à utiliser</h2>
+                            <h2 className="h3 presentation">Optimisez la gestion de votre cabinet médical avec un système de réservation en ligne facile à utiliser</h2>
                         </div>
                         <div>
                             <ul className="header-list">
-                                <li> <span> <MdCheck  /> </span> Améliorez votre référencement en ligne.</li>
-                                <li> <span> <MdCheck /> </span> Facilitez l'organisation de votre activité.</li>
-                                <li> <span> <MdCheck /> </span>Consolidez la relation de confiance avec vos patients.</li>
+                                <li> <span> <MdCheck color='#F27B68'  /> </span> Améliorez votre référencement en ligne.</li>
+                                <li> <span> <MdCheck color='#F27B68' /> </span> Facilitez l'organisation de votre activité.</li>
+                                <li> <span> <MdCheck color='#F27B68' /> </span>Consolidez la relation de confiance avec vos patients.</li>
                             </ul>
                         </div>
                     </Col>
-                    <Col md="6" className="right-content" id="inscription">
+                    <Col md="5" className="right-content" id="inscription">
                         <h3> Vous êtes praticien ?  Un de nos experts vous recontacte </h3>
                         <MedecinForm />
                     </Col>
+                    <img src="/image/group-medecin.png"  className='image-header' alt="Doctor taking care of family" />
+
                 </Row>
+
          
             </Container>
         </header>

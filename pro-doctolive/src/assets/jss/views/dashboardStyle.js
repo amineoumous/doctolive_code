@@ -13,6 +13,13 @@ const dashboardStyle = {
     width: "16px",
     height: "16px"
   },
+  cardImg :{
+    width:98,
+    height:98,
+    position:"relative",
+   
+    maxWidth:322
+  },
   stats: {
     color: grayColor[0],
     display: "inline-flex",
@@ -40,7 +47,13 @@ const dashboardStyle = {
     fontSize: "14px",
     marginTop: "0",
     paddingTop: "10px",
-    marginBottom: "0"
+    marginBottom: "0",
+    textAlign:"center",
+    color: "#61788E",
+    fontFamily:'Montserrat',
+    fontSize: "16.634px",
+    fontWight:"700",
+    textTransform: "uppercase"
   },
   cardCategoryWhite: {
     color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
@@ -50,18 +63,18 @@ const dashboardStyle = {
     marginBottom: "0"
   },
   cardTitle: {
-    color: grayColor[2],
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
+    textAlign:"center",
+
+
+    color: "#C75548",
+    fontFamily: 'Montserrat',
+    fontSize:"33.541px",
+    fontWeight: '700',
+    textTransform: 'uppercase',
+
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
     marginBottom: "3px",
-    textDecoration: "none",
-    "& small": {
-      color: grayColor[1],
-      fontWeight: "400",
-      lineHeight: "1"
-    }
+
   },
   cardTitleWhite: {
     color: whiteColor,

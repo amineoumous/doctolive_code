@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Link, NavLink } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -53,35 +54,39 @@ export default function AdminNavbarLinks(props) {
     setOpenProfile(null);
   };
   return (
-    <div>
-      {/* <div className={classes.searchWrapper}>
+    <div className="header-c">
+    <div className="link-acc">
+       <NavLink
+            to={"/dashboard"}
+            className={classes.accueilLink}
+            activeClassName="active"
+            key={"chat"}
+          >
+            Acceuil
+       
+      </NavLink> 
+    </div>
+    
+      <div className={classes.searchWrapper}>
+        <div className="input-search">
         <CustomInput
           formControlProps={{
             className: classes.margin + " " + classes.search
           }}
           inputProps={{
-            placeholder: "Search",
+            placeholder: "Trouver vos patient",
+            style:{width:316},
             inputProps: {
-              "aria-label": "Search"
+              "aria-label": "Trouver vos patient"
             }
           }}
         />
         <Button color="white" aria-label="edit" justIcon round>
           <Search />
         </Button>
-      </div> */}
-      {/* <Button
-        color={window.innerWidth > 959 ? "transparent" : "white"}
-        justIcon={window.innerWidth > 959}
-        simple={!(window.innerWidth > 959)}
-        aria-label="Dashboard"
-        className={classes.buttonLink}
-      >
-        <Dashboard className={classes.icons} />
-        <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>Dashboard</p>
-        </Hidden>
-      </Button> */}
+      </div>
+      </div>
+
       {/* <div className={classes.manager}>
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
@@ -161,6 +166,11 @@ export default function AdminNavbarLinks(props) {
         </Poppers>
       </div> */}
       <div className={classes.manager}>
+  
+
+     <NavLink to="#"  onClick={handleCloseProfile} className={"logoutbtn"}>
+     Se déconnecter
+      </NavLink>
         <Button
           color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}

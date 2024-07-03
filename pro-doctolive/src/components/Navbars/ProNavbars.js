@@ -1,6 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+
+import {Row, Col, Container} from 'react-bootstrap'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -27,7 +29,7 @@ export default function Header(props) {
   return (
     <AppBar className={classes.appBar + appBarClasses}>
       <Toolbar className={classes.container}>
-        <div className={classes.flex}>
+        {/* <div className={classes.flex}>
 
           {
                routes.map(prop => {
@@ -39,10 +41,15 @@ export default function Header(props) {
                  return null;
                })
           }
-        </div>
-        <Hidden smDown implementation="css">
-          <ProNavbarLink {...props} />
-        </Hidden>
+        </div> */}
+     
+        <Container>
+ 
+            <ProNavbarLink {...props} />
+       
+         
+        </Container>          
+       
         <Hidden mdUp implementation="css">
           <IconButton
             color="inherit"

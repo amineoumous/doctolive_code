@@ -51,18 +51,19 @@ export default function Auth() {
     }, [userData])
 
     return (
-        <div className="section-content">
+        <div className=" page-connexion">
 
             <Container>
 
                 <Row className="justify-content-center">
+            
                     <Col md="6">
                     <Card>
-                            <CardBody className="justify-content-center d-flex flex-column aligh-items-center">
+                            <CardBody className="justify-content-center card-connexion d-flex flex-column aligh-items-center">
                             <h4 className="text-center">{content.new.alreadyHave} </h4>
                                 <Row className="justify-content-center">
                                     <Collapse in={signinWay === "auth"}>
-                                        <div className="mt-5">
+                                        <div>
                                             <AuthForm submiting={postLogin} />
                                         </div>
                                     </Collapse>
@@ -72,20 +73,30 @@ export default function Auth() {
                             </CardBody>
                         </Card>
                         <Card>
-                            <CardBody className="justify-content-center d-flex flex-column aligh-items-center">
+                            <CardBody className="justify-content-center card-register d-flex flex-column aligh-items-center">
                             <h4 className="text-center">{content.new.newIn} </h4>
                                 <Row className="justify-content-center">
                                     <Collapse in={signinWay === "inscription"}>
-                                        <div className="mt-5">
+                                        <div className="">
                                             <InscriptionForm setUserData={setUserData} />
                                         </div>
+                                        
                                     </Collapse>
                                 </Row>
+
                                 {signinWay === "inscription" ? null : <Button onClick= {() => {setSigninWay("inscription")}} color="transparent">{content.new.signup} </Button>}
                             </CardBody>
                         </Card>
                     </Col>
-                </Row>
+
+                  <Row className="img-login-cnx">
+                                <img src='/image/image-cnx-principal.png' />
+                            </Row>
+                  </Row>
+           
+                            
+                  
+
                 
             </Container>
         </div>

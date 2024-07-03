@@ -108,8 +108,10 @@ function CreateEventWithNoOverlap (props) {
         </Row> */}
         <Row>
         {(localizer && eventsToShow) &&
+      
+         
           <Calendar
-          formats={formats}
+           formats={formats}
             selectable
             popup
             popupOffset={30}
@@ -126,10 +128,13 @@ function CreateEventWithNoOverlap (props) {
             }}
             messages={{noEventsInRange: <Emptyagenda />}}
             onSelectEvent ={_showEvent}
-            // onSelectSlot={_addEvent}
+             //onSelectSlot={_addEvent}
             startAccessor ={(event) => {
               return new Date(moment(event.date + event.time, "YYYY/MM/DDHH:mm"))
             }}
+            step={15} // Set the step interval to 15 minutes
+            defaultView="week"
+          
             // TO DO => SET REAL INTERVAL
             endAccessor={(event) => new Date(moment(event.date + event.time, "YYYY/MM/DDHH:mm").add(15, 'minutes'))}
             view={view}

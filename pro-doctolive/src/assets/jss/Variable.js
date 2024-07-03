@@ -44,11 +44,11 @@ const defaultFont = {
   lineHeight: "1.5em"
 };
 
-const primaryColor = ["#1ab9b9", "#7ec8d5", "#36c1d6", "#45cbe1"];
+const primaryColor = ["#1AB9B9", "#7ec8d5", "#36c1d6", "#45cbe1"];
 const warningColor = ["#ff9800", "#ffa726", "#fb8c00", "#ffa21a"];
 const dangerColor = ["#f1000f", "#ff1d1f", "#ff3a2e", "#ff523d"];
 const successColor = ["#4caf50", "#62c463", "#8dca89", "#c7e5c3"];
-const infoColor = ["#1ab9b9", "#26c6da", "#1ab9b9", "#00d3ee"];
+const infoColor = ["#1AB9B9", "#26c6da", "#1AB9B9", "#00d3ee"];
 const roseColor = ["#e91e63", "#ec407a", "#d81b60", "#eb3573"];
 const grayColor = [
   "#999",

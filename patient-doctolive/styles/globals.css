@@ -68,13 +68,13 @@ html * {
   h4,
   h5,
   h6 {
-    font-family: Barlow, sans-serif;
+    font-family:'Montserrat';
     line-height: 1.5em;
     font-weight: bold;
-    background: -webkit-linear-gradient(135deg, rgb(240, 109, 110) 40%, rgb(245, 146, 96) 125%);
+    /* background: -webkit-linear-gradient(135deg, rgb(240, 109, 110) 40%, rgb(245, 146, 96) 125%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; */
   }
   .logo{
     width: 50%;
@@ -168,6 +168,39 @@ ul, ol {
   .partner img.img-fluid{
       width: 70%;
   }
+  .doctolive-cest .start{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    color: #61788E;
+ }
+ .my-conf-css{
+  height: 251.12px; 
+  margin-top:20px !important;
+  padding:30px;
+  border-radius:10px;
+  /* Rectangle 11 */
+box-sizing: border-box;
+background: linear-gradient(180deg, rgba(125, 193, 191, 0.19) 58.85%, rgba(167, 217, 212, 0.1102) 100%);
+ }
+ .my-conf-css .engagement{
+  background-color: #1AB9B9;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 4px;
+  margin-top: 27px;
+  font-weight: 500;
+ }
+ .doctolive-cest .start2{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 29px;
+  color: #61788E;
+}
   .w-button {
     display: inline-block;
     padding: 9px 15px;
@@ -667,15 +700,155 @@ background-color: #ef6c6d !important;
 
 /*    footer   */
 .div-footer {
-  background: #1ab9b9;
-  color: #fff;
+    background: #fff;
+    color: #61788E;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .div-footer p {
+  background: #fff;
+  color: #61788E;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.page-connexion{
+  background: #F0F7F7;
+}
+.card-connexion{
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.25);
+  padding: 1rem 40px !important;
+}
+.card-connexion h4{
+color: #0D2339;
+text-align: center;
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.card-connexion button{
+  border-radius: 13px;
+  border: 2px solid #C6E8EE;
+  background: linear-gradient(180deg, #C6E8EE 0%, #1AB9B9 100%);
+  /* color: white; */
+  color: #FFF;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.card-register{
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.25);
+  padding: 1rem 40px !important;
+
+}
+.card-register h4{
+  color: #0D2339;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.card-register h3{
+  color: #61788E;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.Component-cssNotchedOutline {
+  border-color: #38869C;
+}
+.card-register .signup{
+  border-radius: 13px;
+  border: 2px solid #C6E8EE;
+  background: linear-gradient(180deg, #C6E8EE 0%, #1AB9B9 100%);
+  /* color: white; */
+  color: #FFF;
+  text-align: center;
+  font-family: Roboto;
+  width:100%;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.card-register button{
+  color: #38869C;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
  
-  color: #fff;
+}
+.hr{
+
+  border-bottom:1px solid  #61788E;
+}
+.img-login-cnx{
+  position: absolute;
+top: 215px
+}
+
+/* .card-connexion input{
+  border-radius: 13px;
+  border: 2px solid #38869C;
+  background: #FFF;
+  color: #61788E;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+} */
+
+.copyright{
+  display:flex;
+  padding-bottom: 27px;
+  padding-top: 31px;
+}
+.copyright img{
+  width:111px;
+}
+.copyright p{
+  padding-top: 21px;
+  padding-left: 10px;
+}
+.icon-logo{
+  padding-left:22px;
 }
 .div-footer a {
-  color: #fff;
+  background: #fff;
+  color: #61788E;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .div-footer a i {
   margin-right: 20px;
@@ -802,7 +975,9 @@ background-color: #ef6c6d !important;
   }
 }
 
-
+.copyright-parent{
+  border-top: 1px #CCDFF1 solid;
+}
 .div-menu .navbar-toggler,
 .div-menu a {
   color: white !important;
@@ -818,7 +993,8 @@ background-color: #ef6c6d !important;
   padding: 3rem
 }
 .professionel .nav-link span{
-  padding: 1rem;
+  padding: 7px 15px 7px 15px;
+  font-weight:700 !important
 }
 
 @media (max-width: 992px) {
@@ -898,6 +1074,9 @@ background-color: #ef6c6d !important;
   }
 }
 @media (min-width: 992px) {
+  .copyright-parent{
+    border-top: 1px #CCDFF1 solid;
+  }
   .navbar-expand-lg .navbar-collapse{
     justify-content: flex-end;
   }
@@ -969,17 +1148,22 @@ background-color: #ef6c6d !important;
     text-align: center;
   }
   .div-footer{
-    text-align: center;
+    text-align: left;
   }
   .div-footer p{
     font-size: 13px;
+  }
+  .first-column a{
+    text-align:left !important;
   }
   .contact {
     margin-top: 1rem;
   }
   .footer-element div {
     margin-bottom: 1rem ;
+    
   }
+  
   .image-card{
     padding: 3rem
   }
@@ -1493,6 +1677,7 @@ margin: 0;
   background-position: left bottom;
   background-repeat: no-repeat;
   background-size: 50% 90%;
+  padding-top:39px !important;
 }
 
 @media (max-width: 991px) {
@@ -1547,6 +1732,29 @@ margin: 0;
 .about_us .about_us_text p {
   line-height: 1.929;
   margin-bottom: 35px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  color: #6B8095;
+}
+.about_us_text ul{
+  display: inline-flex;
+  background: linear-gradient(180deg, rgba(167, 217, 212, 0.47) 0%, rgba(167, 217, 212, 0.14) 100%);
+  border-radius: 20px;
+
+}
+
+.about_us_text ul>li{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #0D2339;
+  padding:20px;
+  line-height: 47px;
+}
+.about_us_text ul>li>span{
+ padding-right:10px;
 }
 
 @media (max-width: 576px) {
@@ -1798,7 +2006,7 @@ margin: 0;
 
 /**************** service_part css start ****************/
 .feature_part {
-  padding-top: 140px;
+  padding-top: 48px;
 }
 
 @media (max-width: 991px) {
@@ -2031,19 +2239,42 @@ margin: 0;
    #BUTTON
    ========================================================================== */
 .btn-submit {
-  background: #ef6c6d;
+  background: linear-gradient(180deg, rgba(241, 181, 169, 0.54) 0%, #F27B68 100%);
+  color: #fff;
   font-size: 18px;
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  border: none;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
+  border-top-left-radius:0px;
+  border-bottom-left-radius:0px;
+
+}
+.text-btn-element{
+  padding-right: 10px;
+}
+
+.span-first{
+  background-color: #FFF;
+    border-radius: 5px;
+    color: #1AB9B9;
+}
+.span-second{
+  background: rgba(224, 224, 224, 0.52);
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+.two-button{
+  padding-top:16px;
+}
+.no-padding-left{
+  padding-left:0px;
 }
 
 .btn-submit:hover {
-  background: #36b2af;
+  background: linear-gradient(180deg, rgba(241, 181, 169, 0.54) 0%, #F27B68 100%);
+  color: #fff;
+
 }
 
 @media (max-width: 767px) {
@@ -2353,7 +2584,18 @@ ul.list-items li p{
   padding-left: 65px;
   padding-right: 65px;
   height: 60px;
-  border: 0px solid
+}
+@media screen and (min-width: 735px) {
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon .MuiAutocomplete-inputRoot{
+    padding-left: 65px;
+    padding-right: 65px;
+    height: 60px;
+   
+  }
+  .with-vorder-right{
+    border-right:1px solid #B9B9B9;
+  }
+
 }
 .search .MuiInput-underline:before,.search  .MuiInput-underline:after,.search  .MuiInput-underline:hover:after,.search  .MuiInput-underline:focus:after{
   border-bottom: 0px !important;
@@ -2502,6 +2744,10 @@ padding: 1rem 1.5rem;
 	margin: 0;
 	padding: 0;
 }
+.mb-5{
+  margin-bottom:50px;
+}
+
 
 .clinic-details .cabinet-img-container .thumbnail img {
 	border-radius: 5px;

@@ -6,8 +6,8 @@
         padding: 0,
         border: 0,
         borderRadius: 0,
-        height: "64px",
-        backgroundColor: "#fff",
+        height: "70px",
+        backgroundColor: "#1AB9B9",
         transition: "background-color 0.3s",
     },
     navContent : {
@@ -185,8 +185,9 @@
     navbarNav: {
         
         "& .nav-item .nav-link" :{
-            color: "#224358",
+            color: "#FFF",
             cursor: "pointer",
+            fontFamily:"Montserrat",
             textDecoration: "none",
             padding: "0 20px 0",
             fontWeight: 700,

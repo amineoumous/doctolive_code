@@ -1,0 +1,18 @@
+DB_CONNECTION=qsjdkhkjqsdhs
+TOKEN_SECRET=a1ran2dom3Str3in4gt5hid6de7theTok8enA1ndmakkehim0impossible
+NODE_ENV=dev
+PASSWORD=MyHsQQu7m0Cs
+EMAIL=contact@doctolive.ma
+MAIN_URL=doctolive.ma
+# Gmail SMTP server Configuration
+GMAIL_SERVICE_SECURE=true
+GMAIL_SERVICE_PORT=465
+GMAIL_USER_NAME=contact@doctolive.ma
+SERVICE=Zoho
+GMAIL_HOST=smtp.zoho.com
+PORT=4400
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USER=root
+DATABASE_NAME=doctolives
+DATABASE_PASSWORD=

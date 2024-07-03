@@ -28,8 +28,8 @@ export default {
 
         },
         about : {
-            heading: "à propos de nous",
-            body: "L’idée derrière Doctolive était de construire un concept à long terme qui vise à améliorer la vie quotidienne des gens. En 2021, deux partenaires ont choisi d'aborder le sujet des rendez-vous médicaux. Il est rapidement devenu clair que les patients et les praticiens étaient sensibles à cet outil innovant.",
+            heading: "À propos de nous",
+            body:"Nous sommes une équipe qui a pris en charge de contribuer à résoudre les problèmes auxquels nous sommes confrontés quotidiennement dans le secteur de la santé et de faciliter l'accès aux soins de santé.Grâce à notre plate-forme de téléconsultation médicale, des milliers des marocains pourront passer une consultation médicale, de prendre un rendez-vous physique ou video et de suivre leur état de santé en ligne.De plus, les professionnels de la santé auront une meilleure alternative au travail de secrétariat et un bon système de gestion des rendez-vous.",
             button: "",
             banneritem1:"Rendez-vous 24/7",
             banneritem2:"Rappels automatiques",
@@ -63,7 +63,7 @@ export default {
 
         },
         services : {
-            heading: "Services",
+            heading: "au service de votre santé",
             item1heading: "Consulter des médecins en ligne",
             item1body:"Parlez avec un médecin à l'aide de notre appel vidéo hautement sécurisé. Notre service d'appel vidéo vous aide à parler de vos problèmes de santé avec un médecin lors d'une interaction en direct face à face.",
             item2heading: "Stocker vos documents médicale",
@@ -95,6 +95,14 @@ export default {
         adress: "Maroc - Casablanca",
         politique: "Politique de confidentialité",
         condition: "Conditions d'utilisation",
+        condition2: "Conditions d'utilisation du site Doctolive",
+        regle_de_r:"Règles de référencement",
+        mentions_leg:"Mentions légales",
+        mentions_leg:"Mentions légales",
+        Cookies:"Cookies",
+        protect_donnes_perso:"protection des données personnelles",
+        gestion_de_cookies:"Gestion de cookies et consentement",
+
     },
     new:{
         alreadyHave: "J'ai dèjà un compte Doctolive",

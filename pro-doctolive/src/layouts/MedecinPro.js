@@ -158,15 +158,16 @@ const [state, setState] = React.useState({
 
   return (
     <main className={classes.wrapper}>
+
+      <div className={classes.mainPanel} ref={mainPanel}>
       <Sidebar
         routes={routes.medecinPro}
-        logoText={"PELUX"}
+        logoText={"DOCTOLIVE"}
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
         logo={logo}
         {...rest}
       />
-      <div className={classes.mainPanel} ref={mainPanel}>
         <Navbar
           handleDrawerToggle={handleDrawerToggle}
           {...rest}

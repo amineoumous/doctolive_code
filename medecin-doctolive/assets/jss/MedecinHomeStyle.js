@@ -128,9 +128,8 @@ import {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "50%",
-        width: "100vw",
         paddingTop: "72px !important",
-        paddingBottom: "64px !important",
+        paddingBottom: "117px !important",
         "& .right-content" : {
             backgroundColor:"#fff", 
             padding: 32, 

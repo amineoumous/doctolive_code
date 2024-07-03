@@ -141,7 +141,7 @@ const checkboxAdnRadioStyle = {
         },
         "& .professionel" : {
             "& .nav-link" :{
-                color: "#0596de !important",
+                color: "#0596de !important"
             },
             "& span" :{
                 backgroundColor: "#fff",

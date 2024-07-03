@@ -6,6 +6,7 @@ import moment from 'moment'
 
 import { Link } from 'react-router-dom';
 
+
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import GraduateIcon from 'assets/icons/Experience'
 import Persson from 'assets/icons/User'
@@ -54,7 +55,9 @@ export default function ProfilMedecin (props) {
                                     <h3>{"DR. " + medecinInfos.nom + ' ' + medecinInfos.prenom}</h3>
                                     <ul className="contacts">
                                         <li>
-                                            <h6> informations d'accès </h6> 
+                                            <h6>
+                                                {/* <img src={require("./../../assets/img/listsvg.svg")} /> */}
+                                                informations d'accès </h6> 
                                             {
                                                 !medecinInfos.adress ? 
                                                 "Vous n'avez pas encore spécidier vos information d'accés" : 
@@ -170,7 +173,7 @@ export default function ProfilMedecin (props) {
                 </Col>
             </Row>
              <Row className="justify-content-center ">
-                <Link className="btn btn-primary" to="/profil/edit"> Modifier les informations </Link>
+                <Link className="btn btn-primary btn-update-pro" to="/profil/edit"> Modifier les informations </Link>
             </Row>
          </Container>
         )

@@ -18,7 +18,7 @@ import {
 const sidebarStyle = theme => ({
   drawerPaper: {
     border: "none",
-    position: "fixed",
+    // position: "fixed",
     top: "0",
     bottom: "0",
     left: "0",
@@ -27,7 +27,7 @@ const sidebarStyle = theme => ({
     width: drawerWidth,
     [theme.breakpoints.up("md")]: {
       width: drawerWidth,
-      position: "fixed",
+      // position: "fixed",
       height: "100%"
     },
     [theme.breakpoints.down("sm")]: {
@@ -126,6 +126,9 @@ const sidebarStyle = theme => ({
     }
   },
   list: {
+    display: 'flex',
+    justifyContent: 'center', // Center content vertically
+    alignItems: 'center', // Center content horizontally
     marginTop: "20px",
     paddingLeft: "0",
     paddingTop: "0",
@@ -144,13 +147,12 @@ const sidebarStyle = theme => ({
   },
   itemLink: {
     width: "auto",
+
     transition: "all 300ms linear",
     margin: "10px 15px 0",
-    borderRadius: "3px",
+    borderRadius: "23px",
     position: "relative",
-    display: "block",
-    padding: "10px 15px",
-    backgroundColor: "transparent",
+    display: "flex",
     ...defaultFont
   },
   itemIcon: {
@@ -171,11 +173,21 @@ const sidebarStyle = theme => ({
   },
   itemText: {
     ...defaultFont,
-    margin: "0",
-    lineHeight: "30px",
-    fontSize: "16px",
-    color: blackColor
+    color: "#FFF",
+    fontFamily: "Roboto",
+    fontSize: "20.606px",
+    fontWeight: "700",
+    
   },
+  itemText1: {
+    ...defaultFont,
+    color: "#FFF",
+    fontFamily: "Roboto",
+    fontSize: "12.606px",
+    fontWeight: "700",
+    
+  },
+  
   itemTextRTL: {
     textAlign: "right"
   },
@@ -280,10 +292,11 @@ const sidebarStyle = theme => ({
   },
   sidebarWrapper: {
     position: "relative",
-    height: "calc(100vh - 75px)",
+    // height: "calc(100vh - 75px)",
     overflow: "auto",
-    width: "260px",
-    zIndex: "4",
+    width: "100%",
+    zIndex: "200000",
+    marginTop:60,
     overflowScrolling: "touch"
   },
   activePro: {

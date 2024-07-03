@@ -50,9 +50,9 @@ export default function Home() {
 
         <AboutUs content= {content.about} screenWidth={screenWidth} />
         <SkipWaiting content= {content.skip} screenWidth={screenWidth} />
-        <Steps content= {content.steps} screenWidth={screenWidth} />
         <Services content= {content.services} screenWidth={screenWidth}  />
-        <DownloadArea content= {content.dowload} screenWidth={screenWidth} />
+        <Steps content= {content.steps} screenWidth={screenWidth} />
+        {/* <DownloadArea content= {content.dowload} screenWidth={screenWidth} /> */}
      
     </div>
   )
@@ -145,19 +145,15 @@ function AboutUs({content} ) {
     return (
         <section className="about_us padding_top">
         <div className="container">
-            <div className="row justify-content-between align-items-center">
-                <div className="col-md-6 col-lg-6">
-                    <div className="about_us_img">
-                        <img src="/image/aboutus.png" alt="" className="img-fluid" />
-                    </div>
-                </div>
-                <div className="col-md-6 col-lg-5">
+            <div className="row text-center">
+               
+                <div className="col-md-12 col-lg-12">
                     <div className="about_us_text">
                         <h2>{content.heading}</h2>
                         
                         <p>{content.body}</p>
                         {/* <a className="btn_2 " href="#">{content.button}</a> */}
-                        <div className="banner_item">
+                        {/* <div className="banner_item">
                             <div className="single_item">
                                 <img src="image/hospital.png" alt="" />
                                 <h5>{content.banneritem1}</h5>
@@ -170,7 +166,13 @@ function AboutUs({content} ) {
                                 <img src="image/clock.png" alt="" />
                                 <h5>{content.banneritem3}</h5>
                             </div>
-                        </div>
+                        </div> */}
+                    </div>
+                </div>
+
+                <div className="col-md-12 col-lg-12">
+                    <div className="about_us_img">
+                        <img src="/image/Group.png" alt="" className="img-fluid" />
                     </div>
                 </div>
             </div>
@@ -183,32 +185,34 @@ const SkipWaiting = ({content}) => (
     <section className="skip-waiting padding_top">
         <div className="container">
             <div className="row justify-content-between align-items-center">
-                <div className="col-md-6 col-lg-6">
-                    <div className="about_us_img">
-                        <img src="/image/doctorohone.png" alt="" className="img-fluid" />
-                    </div>
-                </div>
-                <div className="col-md-6 col-lg-5">
-                    <div className="about_us_text">
-                        <h2>{content.heading}</h2>
-                        <h3>{content.subHeading}</h3>
+               
+                <div className="col-md-12 col-lg-12">
+                    <div className="about_us_text text-center">
+                        <h2>{content.heading}{'...'}{content.subHeading}</h2>
+                
                         <ul>
                             <li className="bonus">
-                                <span> <BiCheck color="#14bef0" size="24" /> </span>
+                                <span> <BiCheck color="#F27B68" size="30" /> </span>
                                 <span> {content.banneritem1} </span>
                             </li>
                             <li className="bonus">
-                                <span> <BiCheck color="#14bef0" size="24" /> </span>
+                                <span> <BiCheck color="#F27B68" size="30" /> </span>
                                 <span> {content.banneritem2} </span>
                             </li>
                             <li className="bonus">
-                                <span> <BiCheck color="#14bef0" size="24" /> </span>
+                                <span> <BiCheck color="#F27B68" size="30" /> </span>
                                 <span> {content.banneritem3} </span>
                             </li>
                         </ul>
                         <a className="btn_2 btn btn-primary" href="#recherche-medecin">{content.button}</a>
                     </div>
                 </div>
+
+                {/* <div className="col-md-12 col-lg-12">
+                    <div className="about_us_img">
+                        <img src="/image/doctorohone.png" alt="" className="img-fluid" />
+                    </div>
+                </div> */}
             </div>
         </div>
     </section>
@@ -255,7 +259,8 @@ const Services = ({content}) => (
             <div className="row justify-content-center">
                 <div className="col-xl-8">
                     <div className="section_tittle text-center">
-                        <h2> {content.heading} </h2>
+                        <h3>{'Doctolive:'}</h3>
+                        <h3> {content.heading} </h3>
                     </div>
                 </div>
             </div>
@@ -263,53 +268,96 @@ const Services = ({content}) => (
                 <div className="col-lg-3 col-sm-12">
                     <div className="single_feature">
                         <div className="single_feature_part">
-                            <div className="row flex-nowrap">
-                                 <span className="single_feature_icon"><img src="image/icon/online-doctor.svg" alt="" /></span>
-                                <h4>{content.item1heading}</h4>
-                            </div>
+                         
+                            <img src="image/OnlineConsulting.png" alt="" />
+                          
                            
                             <p> {content.item1body} </p>
                         </div>
                     </div>
-                    <div className="single_feature">
+                  
+                </div>
+                <div className="col-lg-3 col-sm-12">
+                  <div className="single_feature">
                         <div className="single_feature_part">
-                            <div className="row flex-nowrap">
-                                <span className="single_feature_icon"><img src="image/icon/document.svg" alt="" /></span>
-                            <h4> {content.item2heading} </h4>
-                            </div>
+                       
+                                  
+                            <img src="image/security-doc.png" alt="" />
+                                                  
                             
                             <p>{content.item2body}</p>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 col-sm-12">
-                        <div className="single_feature_img">
-                            <img src="image/service.png" alt="" className="img-fluid" />
-                        </div>
-                </div>
                 <div className="col-lg-3 col-sm-12">
-                    <div className="single_feature">
+                  <div className="single_feature">
                         <div className="single_feature_part">
-                            <div className="row flex-nowrap">
-                                <span className="single_feature_icon"><img src="image/icon/calendar.svg" alt="" /></span>
-                                <h4> {content.item3heading} </h4>
-                            </div>
+                     
+                                  
+                            <img src="image/adv-info.png" alt="" />
+                                              
                             
                             <p>{content.item3body}</p>
                         </div>
                     </div>
+                </div>
+
+                <div className="col-lg-3 col-sm-12">
                     <div className="single_feature">
                         <div className="single_feature_part">
-                            <div className="row flex-nowrap">
-                                <span className="single_feature_icon"><img src="image/icon/find-doctor.svg" alt="" /></span>
-                                <h4> {content.item4heading} </h4>
-                            </div>
-                            
+                        <img src="image/Soins.png" alt="" />
+                           
+        
                             <p>{content.item4body}</p>
                         </div>
                     </div>
+                
                 </div>
             </div>
+
+            <div className="row justify-content-between align-items-center doctolive-cest">
+                <div className="col-lg-3 col-sm-12 ">
+                <span className='start'>Doctolive c’est...</span>
+                </div>
+
+                <div className="col-lg-3 col-sm-12 text-center">
+                <h4>10 Milliers</h4>
+                 <span className='start2'>patients</span>
+  
+                </div>
+                <div className="col-lg-3 col-sm-12 text-center">
+                <h4> 23 000 </h4>
+                 <span className='start2'>personnels de santé</span>
+                </div>
+                <div className="col-lg-3 col-sm-12 text-center">
+                <h4> 50% </h4>
+                 <span className='start2'>consultations</span>
+                </div>
+            </div>
+
+            <div className="row justify-content-between align-items-center my-conf-css">
+            <div className="col-lg-8 col-sm-12 ">
+                <h3>Votre santé. Vos données.</h3>
+                <p>La confidentialité de vos informations personnelles est une préiorité absolue pour Doctolive et guide notre action au quotidien.</p>
+                <a className='engagement'> Découvrir nos engagements</a>
+                </div>
+                <div className="col-lg-4 col-sm-12 text-center ">
+                <img src="/image/padlock-inject.png" alt="" className="img-fluid" />
+                </div>
+            </div>
+
+            <div className="row justify-content-between align-items-center my-conf-css">
+            <div className="col-lg-8 col-sm-12 ">
+                <h3>Découvrez l’application mobile Doctolive</h3>
+                <p>Pour accéder à vos praticiens à tout moment, où que vous soyez.</p>
+                <a><img src="/image/play-s.png" alt="" className="img-fluid" /></a>
+                <a><img src="/image/app-s.png" alt="" className="img-fluid" /></a>
+                </div>
+                <div className="col-lg-4 col-sm-12 text-center ">
+                <img src="/image/character--inject-62.png" alt="" className="img-fluid" />
+                </div>
+            </div>
+
         </div>
     </section>
 )

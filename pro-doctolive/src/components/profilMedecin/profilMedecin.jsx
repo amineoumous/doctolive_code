@@ -170,11 +170,12 @@ export default function ProfilMedecin () {
                             </div>
                         </div>
                     </div>
-                </Col>
-            </Row>
-             <Row className="justify-content-center ">
+                    <Row className="justify-content-center ">
                 <Link className="btn btn-primary" to="/profil/edit"> Modifier les informations </Link>
             </Row>
+                </Col>
+            </Row>
+            
          </>
         )
     

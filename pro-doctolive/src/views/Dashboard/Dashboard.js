@@ -24,7 +24,9 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import styles from "assets/jss/views/dashboardStyle.js";
-import Consulting from 'assets/img/consulting.png'
+import Consulting from 'assets/img/consultation2.svg'
+import imageMoney from 'assets/img/money-img.svg'
+import Accessibility2 from 'assets/img/access.svg'
 import {FcMoneyTransfer} from 'react-icons/fc'
 const useStyles = makeStyles(styles);
 
@@ -35,56 +37,66 @@ export default function Dashboard() {
       <GridContainer>
       
         <GridItem xs={12} sm={4} md={4}>
-          <Card>
-            <CardHeader color="success" style={{maxWidth: "100%", display:"block"}} stats icon>
-              <CardIcon color="success">
-                <FcMoneyTransfer />
-              </CardIcon>
+          <Card className={"card-stats"}>
+            <CardHeader color="success" style={{maxWidth: "100%", display:"block",textAlign:"center",alignItems: "center",top:-44,justifyContent: "center"}} stats icon>
+              <div >
+              <img src={imageMoney} alt="  . . . " className={classes.cardImg}  /> 
+              </div>
               <p className={classes.cardCategory}>Revenu</p>
-              <h3 className={classes.cardTitle}>0 MAD </h3>
+            
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
+            <div className={classes.stats}>
                 <DateRange />
                   Depuis la création
               </div>
+            <CardFooter style={{width:"100%",textAlign:"center",alignItems:"center",justifyContent:"center"}} stats>
+           
+              <h3 className={classes.cardTitle}>0 MAD </h3>
             </CardFooter>
           </Card>
         </GridItem>
+
         <GridItem xs={12} sm={4} md={4}>
-          <Card>
-            <CardHeader color="danger" style={{maxWidth: "100%", display:"block"}} stats icon>
-              <CardIcon color="danger" style={{textAlign: "center"}}>
-              <img src={ Consulting} alt="  . . . " width="60%" /> 
-              </CardIcon>
-              <p className={classes.cardCategory}>Consultation</p>
-              <h3 className={classes.cardTitle}>75</h3>
-            </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <LocalOffer />
-                 En cabinet et en vidéo
+          <Card className={"card-stats"}>
+            <CardHeader color="success" style={{maxWidth: "100%", display:"block",alignItems: "center",top:-44,justifyContent: "center",textAlign:"center"}} stats icon>
+              <div>
+              <img src={Consulting} alt="  . . . " className={classes.cardImg}  /> 
               </div>
+              <p className={classes.cardCategory}>Consultation</p>
+            
+            </CardHeader>
+            <div className={classes.stats}>
+            <LocalOffer />
+                En cabinet et en vidéo
+              </div>
+            <CardFooter style={{width:"100%",textAlign:"center",alignItems:"center",justifyContent:"center"}} stats>
+           
+              <h3 className={classes.cardTitle}>75</h3>
             </CardFooter>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={4} md={4}>
-          <Card>
-            <CardHeader color="info" style={{maxWidth: "100%", display:"block"}} stats icon>
-              <CardIcon color="info">
-                <Accessibility />
-              </CardIcon>
-              <p className={classes.cardCategory}>Patient traité</p>
-              <h3 className={classes.cardTitle}>+245</h3>
+          <Card className={"card-stats"}>
+            <CardHeader color="success" style={{maxWidth: "100%", display:"block",textAlign:"center",alignItems: "center",top:-44,justifyContent: "center"}} stats icon>
+              <div >
+              <img src={Accessibility2} alt="  . . . " className={classes.cardImg}  /> 
+              </div>
+              <p className={classes.cardCategory}> Patient traité</p>
+            
             </CardHeader>
-            <CardFooter stats>
-              <div className={classes.stats}>
-                <Update />
+            <div className={classes.stats}>
+            <Update />
+               
                 Sur la plateforme
               </div>
+            <CardFooter style={{width:"100%",textAlign:"center",alignItems:"center",justifyContent:"center"}} stats>
+           
+              <h3 className={classes.cardTitle}>250 </h3>
             </CardFooter>
           </Card>
         </GridItem>
+
+     
       </GridContainer>
       
     </div>

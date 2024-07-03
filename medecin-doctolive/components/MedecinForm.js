@@ -160,6 +160,17 @@ export default  class ElementForm extends Component  {
                                 error={fieldValidationErrors.nomError}
                                 placeholder="Votre nom de famille"
                                 label="Nom"
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 Icone={FaUserMd}
                                 required={true}
                                 variant="outlined"
@@ -175,6 +186,17 @@ export default  class ElementForm extends Component  {
                             <TextField
                                 placeholder="Votre prenom"
                                 variant="outlined"
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 required={true}
                                 error={fieldValidationErrors.prenomError}
                                 label="Prenom"
@@ -193,6 +215,17 @@ export default  class ElementForm extends Component  {
                                 label="Numéro de téléphone" 
                                 Icone={FaPhone}
                                 name="phone"
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 required={true}
                                 variant="outlined"
                                 error={fieldValidationErrors.numeroError}
@@ -218,6 +251,17 @@ export default  class ElementForm extends Component  {
                                 Icone={FaMailBulk}
                                 placeholder="Adresse email"
                                 variant="outlined"
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 name="email"
                                 error={fieldValidationErrors.emailError}
                                 required={true}
@@ -230,13 +274,14 @@ export default  class ElementForm extends Component  {
                         </Col> 
                         <Col xs="12" className="mt-3"> 
                             <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="standard-adornment-password"> Mot de passe </InputLabel>
+                                <InputLabel htmlFor="standard-adornment-password" style={{color:"#61788E"}}> Mot de passe </InputLabel>
                                 <OutlinedInput
                                     id="standard-adornment-password"
                                     type={this.state.showPassword ? 'text' : 'password'}
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                     required={true}
+                                    
                                     label="Mot de passe"
                                     name="password"
                                     endAdornment={
@@ -298,8 +343,10 @@ export default  class ElementForm extends Component  {
                         </div>
                     </Collapse>
                 </Row>
-                <Row className="align-items-center justify-content-around mt-4 ">
-                    <Button type="submit" color="primary"> Enregistrer </Button>
+                <Row className="left-content ">
+                <Col xs="12" md="12" className="mt-3">
+                    <Button type="submit" className="btn-save" color="primary"> Enregistrer </Button>
+                    </Col>
                 </Row>
             </form>
     );

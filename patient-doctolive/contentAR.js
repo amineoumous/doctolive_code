@@ -92,6 +92,13 @@ export default {
         adress: "المغرب - الدار البيضاء",
         politique: "سياسة الخصوصية",
         condition: "شروط الاستعمال",
+        condition2: "Conditions d'utilisation du site Doctolive",
+        regle_de_r:"Règles de référencement",
+        mentions_leg:"Mentions légales",
+        mentions_leg:"Mentions légales",
+        Cookies:"Cookies",
+        protect_donnes_perso:"protection des données personnelles",
+        gestion_de_cookies:"Gestion de cookies et consentement",
     },
     new:{
         alreadyHave: "لدي بالفعل حساب Doctolive",

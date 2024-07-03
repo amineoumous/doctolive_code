@@ -33,8 +33,8 @@ app.use(function (req, res, next) {
   try {
     const allowedOrigins = ['http://127.0.0.1:8020', 'http://localhost:3000', 'http://127.0.0.1:9000', 'http://localhost:3001','http://localhost:3002', "https://doctolive.ma/", "https://doctor.doctolive.ma/", "https://pro.doctolive.ma/", "https://admin.doctolive.ma/"];
     const origin = req.headers.origin;
-    // console.log(origin, req.headers )
-    return next();
+    //  console.log(origin, req.headers )
+    // return next();
     if(origin){
       if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);

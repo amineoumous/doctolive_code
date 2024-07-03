@@ -14,9 +14,24 @@ import contentAR from './../contentAR'
 
 import {Row, Collapse, Alert} from 'react-bootstrap'
 
+
+const useOutlinedInputStyles = makeStyles(theme => ({
+  root: {
+    "& $notchedOutline": {
+      borderColor: "#38869C",borderWidth:"2px !important"
+    },
+    "&:hover $notchedOutline": {
+      borderColor: "#38869C",borderWidth:"2px !important"
+    },
+    "&$focused $notchedOutline": {
+      borderColor: "#38869C",borderWidth:"2px !important"
+    }
+  },
+  focused: {},
+  notchedOutline: {}
+}));
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -31,7 +46,19 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    
   },
+
+  textField: {
+    borderRadius:13,
+    borderColor:"#38869C",
+    color:"#61788E"
+ },
+ text_info:{
+     color:"#61788E",
+     fontSize:14,fontWeight:500
+ },
+ notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
 }));
 
 
@@ -128,7 +155,7 @@ export default function AuthForm(props){
     <Container component="main" maxWidth="xs">
 
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5"> {content.new.auth} </Typography>
+        {/* <Typography component="h1" variant="h5"> {content.new.auth} </Typography> */}
         <form className={classes.form} onSubmit={(e) => submiting(e, {email, password})}>
           <TextField
             value= {email}
@@ -137,6 +164,17 @@ export default function AuthForm(props){
             margin="normal"
             required
             fullWidth
+            InputProps={{
+              classes: {
+                  notchedOutline: classes.notchedOutline
+              },
+              style: {
+                borderRadius: "10px"
+              }
+            }}
+            InputLabelProps={{
+              style: { color: '#61788E' },
+            }}
             id="email"
             variant="outlined"
             onBlur={validateField} 
@@ -153,6 +191,17 @@ export default function AuthForm(props){
             required
             fullWidth
             onBlur={validateField} 
+            InputProps={{
+              classes: {
+                  notchedOutline: classes.notchedOutline
+              },
+              style: {
+                borderRadius: "10px"
+              }
+            }}
+            InputLabelProps={{
+              style: { color: '#61788E' },
+            }}
             name="password"
             label={content.new.passLabel}
             type="password"

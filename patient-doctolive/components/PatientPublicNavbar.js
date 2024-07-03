@@ -43,12 +43,15 @@ function PatientPublicNavbar(props) {
                               <Link href={"/"}>
                                 <a className="view-pro-btn">
                                   <div style={{display: "inline-block",
-                                        width: "95px",
-                                        height: "50px",
-                                        backgroundImage: `url(/image/doctoLogo-white.png)`,
+                                        marginTop:"31px",
+                                        width: "146px",
+                                        height: "32px",
+                                        backgroundImage: `url(/image/Doctolive.png)`,
                                         backgroundRepeat: "no-repeat",
                                         backgroundPosition: "center",
-                                        backgroundSize: "95px auto",}}>  
+                                       }}>  
+                                       
+
                                   </div> 
                                 </a>
                             </Link>
@@ -59,20 +62,39 @@ function PatientPublicNavbar(props) {
                                     <span className="icon-bar"></span>
                                 </Navbar.Toggle>
                             </div>
-                            
+                     
                             <Row>
                                 <Navbar.Collapse id="basic-navbar-nav">
-                                    <Nav as="ul" activeKey={props.router? props.router.pathname: null} className={classes.navbarNav} >
+
+                           
+                            <ul id="two-button" className='navbar-docto makeStyles-navbarNav-103 '>
+                            <Nav.Item className="professionel" as="li">
+                                        {/* <Link href='https://info.doctolive.ma' passHref> */}
+                                          <Nav.Link href="https://doctor.doctolive.ma" className="" > 
+                                              <span className='span-first'>  {content.navbar.medecin} </span>
+                                          </Nav.Link> 
+
+                                        
+                                        
+                                      </Nav.Item> 
+
                                       <Nav.Item className="professionel" as="li">
                                         {/* <Link href='https://info.doctolive.ma' passHref> */}
                                           <Nav.Link href="https://doctor.doctolive.ma" className="" > 
-                                              <span >  {content.navbar.medecin} </span>
+                                              <span className='span-second'>  {content.navbar.medecin} </span>
                                           </Nav.Link> 
-                                        {/* </Link> */}
+
+                                        
                                         
                                       </Nav.Item> 
+                                    </ul>
+                          
+                                    <Nav as="ul" activeKey={props.router? props.router.pathname: null} className={classes.navbarNav} >
+
+                                  
                                      
-                                        {/* <Nav.Item as="li"> 
+{/*                                      
+                                        <Nav.Item as="li"> 
                                           <Link href='/contact' passHref>
                                           <Nav.Link > 
                                               <span >   {content.navbar.contact} </span>

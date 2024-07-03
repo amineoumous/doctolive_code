@@ -22,6 +22,11 @@ const footerStyle = {
     float: "left!important",
     display: "block"
   },
+  center: {
+    display: "flex",
+    alignItems:"center",
+    justifyContent:"center"
+  },
   right: {
     padding: "15px 0",
     margin: "0",

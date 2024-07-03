@@ -88,7 +88,14 @@ export default {
         contact: "ontact us ",
         adress: "Morocco - Casablanca",
         politique: "Privacy Policy",
-        condition: "Terms of use"
+        condition: "Terms of use",
+        condition2: "Conditions d'utilisation du site Doctolive",
+        regle_de_r:"Règles de référencement",
+        mentions_leg:"Mentions légales",
+        mentions_leg:"Mentions légales",
+        Cookies:"Cookies",
+        protect_donnes_perso:"protection des données personnelles",
+        gestion_de_cookies:"Gestion de cookies et consentement",
     },
     new:{
         alreadyHave: "I already have a Doctolive account",

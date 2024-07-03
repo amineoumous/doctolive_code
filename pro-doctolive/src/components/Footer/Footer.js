@@ -15,40 +15,19 @@ export default function Footer(props) {
   return (
     <footer className={classes.footer}>
       <div className={classes.container}>
-        <div className={classes.left}>
-          {/* <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#home" className={classes.block}>
-                Home
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#company" className={classes.block}>
-                Company
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#portfolio" className={classes.block}>
-                Portfolio
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#blog" className={classes.block}>
-                Blog
-              </a>
-            </ListItem>
-          </List> */}
-        </div>
-        <p className={classes.right}>
-          <span>
+     
+        <p className={classes.center}>
+           <img src={require("./../../assets/img/Doctolive.svg")} alt="" className="img-fluid" />
+           <span className="footer-phrase">
+         
             &copy; {1900 + new Date().getYear()}{" "}
-            <a
-              href="https://www.pelux.ma"
+            {/* <a
+              href="https://www.doctolive.ma"
               target="_blank"
               className={classes.a}
-            >
-              doctolive
-            </a>
+            > */}
+             Doctolive tous droits réservés.
+            {/* </a> */}
             
           </span>
         </p>

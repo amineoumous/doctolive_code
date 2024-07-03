@@ -7,7 +7,7 @@
         padding: 0,
         border: 0,
         borderRadius: 0,
-        height: "64px",
+        height: "120px",
         backgroundColor: "#1ab9b9",
         transition: "background-color 0.3s",
     },
@@ -51,7 +51,7 @@
         },
         "& .professionel" : {
             "& .nav-link" :{
-                color: "#0596de !important",
+                color: "#1AB9B9 !important",
             },
             "& span" :{
                 backgroundColor: "#fff",

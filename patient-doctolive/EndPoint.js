@@ -7,4 +7,4 @@ const prodConfig = {
     BACKEND_URL : "https://api.doctolive.ma",
     apiKey: "AIzaSyD6tk8dFF4GDnB0iABV95Zs_CCOZ92K9sw"
 }
-export default LocalConfig
+export default prodConfig

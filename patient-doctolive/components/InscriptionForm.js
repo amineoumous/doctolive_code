@@ -4,6 +4,8 @@ import React, {useState} from "react";
 import { Col,Row, Alert, Collapse } from 'react-bootstrap';
 
 import Config from './../EndPoint'
+import { makeStyles } from '@material-ui/core/styles';
+
 // @material-ui/icons
 import InputLabel from '@material-ui/core/InputLabel';
 
@@ -29,13 +31,40 @@ import contentFR from './../contentFR'
 import contentEN from './../contentEN'
 import contentAR from './../contentAR'
 
+const useStyles = makeStyles((theme) => ({
+    textField: {
+       borderRadius:13,
+       borderColor:"#38869C",
+       color:"#61788E"
+    },
+    text_info:{
+        color:"#61788E",
+        fontSize:14,fontWeight:500
+    },
+    notchedOutline: { borderColor: '#38869C !important',borderWidth:"2px !important" }
+  }));
 
-
+  const useOutlinedInputStyles = makeStyles(theme => ({
+    root: {
+      "& $notchedOutline": {
+        borderColor: "#38869C",borderWidth:"2px !important"
+      },
+      "&:hover $notchedOutline": {
+        borderColor: "#38869C",borderWidth:"2px !important"
+      },
+      "&$focused $notchedOutline": {
+        borderColor: "#38869C",borderWidth:"2px !important"
+      }
+    },
+    focused: {},
+    notchedOutline: {}
+  }));
 export default function ElementForm(props){
     const router = useRouter();
     const {locale} = router;
     const content = locale === "ar" ? contentAR : locale === "en" ? contentEN : contentFR;
-
+    const classes = useStyles();
+    const outlinedInputClasses = useOutlinedInputStyles();
     const [state, setState] = useState({
                 nom: "",
                 prenom:"",
@@ -112,6 +141,8 @@ export default function ElementForm(props){
 
     }
 
+
+
     const handleChange = ({target : {value, name}}) => {
         
         if(name === "phone"){
@@ -132,12 +163,30 @@ export default function ElementForm(props){
             <form onSubmit={handleSubmit} autoComplete="off">
             
                 <Row>
+                <Col xs="12" md="12"> 
+                <h3>Saisissez vos informations pour continuer.</h3>
+                </Col>
                         <Col xs="12" md="6"> 
                             <TextField
+                               className={classes.textField}
+                           
+                            
+                               
                                 error={fieldValidationErrors.nomError}
                                 placeholder=""
                                 label={content.new.labelNom}
                                 required={false}
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: classes.notchedOutline
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 variant="outlined"
                                 name="nom"
                                 onBlur={validateField} 
@@ -150,6 +199,19 @@ export default function ElementForm(props){
                             <TextField
                                 placeholder=""
                                 variant="outlined"
+                                
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: classes.notchedOutline
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
+                                
                                 required={false}
                                 error={fieldValidationErrors.prenomError}
                                 label={content.new.labelPrenom}
@@ -174,7 +236,17 @@ export default function ElementForm(props){
                                 helperText={state.phoneError ? content.new.phoneError : ""}
                                 margin="normal"
                                 required
-                                fullWidth
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: classes.notchedOutline
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 id="patientPhone"
                                 label={content.new.phoneLabel}
                                 name="phone"
@@ -187,6 +259,17 @@ export default function ElementForm(props){
                                 fullWidth
                                 label={content.new.emailLabel}
                                 placeholder="Adresse email"
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: classes.notchedOutline
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                                 variant="outlined"
                                 name="email"
                                 error={fieldValidationErrors.emailError}
@@ -209,11 +292,23 @@ export default function ElementForm(props){
                                 onBlur={validateField} 
                                 value={state.email_confirmation}
                                 onChange={handleChange} 
+
+                                InputProps={{
+                                    classes: {
+                                        notchedOutline: classes.notchedOutline
+                                    },
+                                    style: {
+                                      borderRadius: "10px"
+                                    }
+                                  }}
+                                  InputLabelProps={{
+                                    style: { color: '#61788E' },
+                                  }}
                             />
                         </Col> 
                         <Col xs="12" className="mt-3"> 
                             <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="standard-adornment-password"> {content.new.passLabel} </InputLabel>
+                                <InputLabel style={{color:"#61788E"}} htmlFor="standard-adornment-password"> {content.new.passLabel} </InputLabel>
                                 <OutlinedInput
                                     id="standard-adornment-password"
                                     type={state.showPassword ? 'text' : 'password'}
@@ -221,6 +316,10 @@ export default function ElementForm(props){
                                     onChange={handleChange}
                                     required={true}
                                     label={content.new.passLabel}
+                                    inputProps={{
+                                        style: { color: '#61788E' },
+                                      }}
+                                    classes={outlinedInputClasses}
                                     name="password"
                                     endAdornment={
                                     <InputAdornment position="end">
@@ -268,8 +367,16 @@ export default function ElementForm(props){
                         </div>
                     </Collapse>
                 </Row>
-                <Row className="align-items-center justify-content-around mt-4 ">
-                    <Button type="submit" color="primary"> {content.new.signup} </Button>
+                <Row className="justify-content-center text-center mt-1" >
+                <Col xs="12"  className="mt-3">
+                <p className={classes.text_info}>Votre mot de passe vous permettra de gérer vos rendez-vous médicaux.</p>
+                </Col>
+                </Row>
+
+                <Row className="align-items-center justify-content-around  ">
+                <Col xs="12" className="mt-3"> 
+                    <Button type="submit" color="primary " className="signup"> {content.new.signup} </Button>
+                </Col>
                 </Row>
             </form>
     );

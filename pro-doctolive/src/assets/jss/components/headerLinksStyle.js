@@ -99,14 +99,23 @@ const headerLinksStyle = theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "100%"
     },
-    display: "inline-block"
+    display: "inline-block",
+    width:"20%"
   },
   searchWrapper: {
     [theme.breakpoints.down("sm")]: {
       width: "-webkit-fill-available",
       margin: "10px 15px 0"
     },
-    display: "inline-block"
+    display: "inline-block",
+    width:"47%"
+  },
+  accueilLink: {
+    color: "#FFF",
+    fontFamily: "Roboto",
+    fontSize: "18px",
+    fontStyle:"normal",
+    fontWeight: "700"
   }
 });
 

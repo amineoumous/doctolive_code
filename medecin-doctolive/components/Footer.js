@@ -10,6 +10,23 @@ import {IoIosPhonePortrait} from 'react-icons/io'
 import {AiOutlineInstagram} from 'react-icons/ai'
 export default function DivFooter(){
     const [screenWidth, setScreenWidth] = React.useState(1);
+    const content={footer:{
+        partner: "Devenir Médecin partenaire",
+        signin: "S'inscrire en tant que patient",
+        faq: "Des questions ?",
+        contact: "Nous Contacter ",
+        adress: "Maroc - Casablanca",
+        politique: "Politique de confidentialité",
+        condition: "Conditions d'utilisation",
+        condition2: "Conditions d'utilisation du site Doctolive",
+        regle_de_r:"Règles de référencement",
+        mentions_leg:"Mentions légales",
+        mentions_leg:"Mentions légales",
+        Cookies:"Cookies",
+        protect_donnes_perso:"protection des données personnelles",
+        gestion_de_cookies:"Gestion de cookies et consentement",
+
+    }};
     React.useEffect(() => {
         function updateSize() {
               setScreenWidth(window.innerWidth)
@@ -26,82 +43,126 @@ export default function DivFooter(){
         <div className="div-footer">
             <div className=" pt-5 pb-1">
                 <div className="container">
-                    <Row className="justify-content-around footer-element">
-                        <Col xs="12" md="6" lg="4">
-                            
-                            <Nav as="ul" className="d-flex flex-column" >
-                                <Nav.Item as="li" className="doctolive">
-                                    <Link href="/" passHref>
-                                        <Nav.Link  > <img src={"/image/doctoLogo-white.png"} className="img-fluid logo" /> </Nav.Link>
-                                    </Link>
-                                </Nav.Item>
-                                {/* <Nav.Item as="li">
-                                    <Link href="/qui-sommes-nous" passHref>
-                                        <Nav.Link className="" >À propos de nous</Nav.Link>
-                                    </Link>
-                                </Nav.Item> */}
-                                     <Nav.Item as="li">
-                                    <Link href="/#inscription" passHref>
-                                        <Nav.Link  > Devenir Médecin partenaire </Nav.Link>
-                                    </Link>
-                                </Nav.Item>
-                                  
-                                <li className="nav-item"> <a href="https://doctolive.ma/account/new" className="nav-link"> Je suis un patient </a> </li>
+                <Row className="justify-content-around footer-element copyright-parent">
+                        <Col xs="12" md="12" lg="12" className="copyright text-left">
+                           <img className="img-fluid logo" src={"/image/Doctolive.svg"} />
+                            <p>© 2021 Doctolive tous droits réservés.  </p>
+                        </Col>
+                </Row>
 
+                    <Row className="justify-content-around footer-element">
+                        <Col xs="12" md="4" lg="4" className="first-column text-left">
+                            <Nav as="ul" className="d-flex flex-column" >
+                               
+                                <Nav.Item as="li">
+                              
+                                    <Link href="https://doctor.doctolive.ma/" passHref>
+                                        <Nav.Link className="yb-link" >{content.footer.partner} </Nav.Link>
+                                    </Link>
+                                </Nav.Item>
+                                <Nav.Item as="li">
+                                    <Link href="/account/new" passHref>
+                                        <Nav.Link className="yb-link" >{content.footer.signin} </Nav.Link>
+                                    </Link>
+                                </Nav.Item>
+
+
+                                <Nav.Item as="li">
+                                   <Link href="/privacy-policy" passHref>
+                            <Nav.Link className="yb-link" > {content.footer.politique} </Nav.Link>
+                                </Link>   
+                                </Nav.Item>
+
+
+
+                         <Nav.Item as="li">
+                        <Link href="/terms-of-use" passHref>
+                            <Nav.Link className="yb-link" > {content.footer.condition} </Nav.Link>
+                        </Link>
+                            </Nav.Item>
+
+                            <Nav.Item as="li">
+                        <Link href="/terms-of-use" passHref>
+                            <Nav.Link className="yb-link" > {content.footer.condition2} </Nav.Link>
+                        </Link>
+                            </Nav.Item>
+                                
+                            
                             </Nav>
                         </Col>
-                        {
-                            screenWidth > 991 ?
-                            <Col xs="12" md="12" lg="4">
-                            {/* <h4 style={{color:"#fff"}}> {content.footer.faq} </h4>
+                        <Col xs="12" md="4" lg="4" className="first-column text-left">
                             <Nav as="ul" className="d-flex flex-column" >
-                                    <Nav.Item as="li">
-                                        <Link href="/contact" passHref>
-                                            <Nav.Link className="yb-link"> {content.footer.contact} </Nav.Link>
-                                        </Link>
-                                    </Nav.Item>
-                                </Nav> */}
-                            </Col>
-                            : null
-                        }
-                       
-                        <Col xs="12" md="6" lg="4" className="contact">
-                            <p><IoLocationOutline size="24" /> Casablanca - Maroc </p>
-                            <p><IoIosPhonePortrait size="24" /> +212 688739472 </p>
-                            <div className="footer-social" style={{listStyle: "none", width: "100%", display: "flex", flexDirection: "row"}}>
-                                <div className="mr-5">
-                                    <a target="_blank" href="https://facebook.com/DoctoliveApp"> <FaFacebookF size="24" /> </a>
-                                </div>
-                                {/* <div className="mr-5">
-                                    <a href="#"><FaLinkedinIn size="24" /></a>
-                                </div> */}
-                                <div className="">
-                                    <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr"><AiOutlineInstagram size="24" /></a>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row className="row mt-3 ms-5 flex-wrap">
-                       
-                        <Col md="4">
-                        <Link href="/privacy-policy" passHref>
-                            <Nav.Link className="" > Politique de confidentialité </Nav.Link>
-                        </Link>
-                            <p className=""></p>
-                        </Col>
-                        <Col md="4">
+                               
+                                <Nav.Item as="li">
+                              
+                                    <Link href="https://doctor.doctolive.ma/" passHref>
+                                        <Nav.Link className="yb-link" >{content.footer.regle_de_r} </Nav.Link>
+                                    </Link>
+                                </Nav.Item>
+                                <Nav.Item as="li">
+                                    <Link href="/account/new" passHref>
+                                        <Nav.Link className="yb-link" >{content.footer.mentions_leg} </Nav.Link>
+                                    </Link>
+                                </Nav.Item>
+
+
+                                <Nav.Item as="li">
+                                   <Link href="/privacy-policy" passHref>
+                            <Nav.Link className="yb-link" > {content.footer.Cookies} </Nav.Link>
+                                </Link>   
+                                </Nav.Item>
+
+
+
+                         <Nav.Item as="li">
                         <Link href="/terms-of-use" passHref>
-                            <Nav.Link className="" > Conditions d'utilisation </Nav.Link>
+                            <Nav.Link className="yb-link" > {content.footer.protect_donnes_perso} </Nav.Link>
                         </Link>
+                            </Nav.Item>
+
+                            <Nav.Item as="li">
+                        <Link href="/terms-of-use" passHref>
+                            <Nav.Link className="yb-link" > {content.footer.gestion_de_cookies} </Nav.Link>
+                        </Link>
+                            </Nav.Item>
+                                
+                            
+                            </Nav>
                         </Col>
-                        <Col md="4">
-                        <Link href="/" passHref>
-                            <Nav.Link className="" > © 2021 Doctolive </Nav.Link>
-                        </Link>
+                
+                       
+                        <Col xs="12" md="4" lg="4" className="contact">
+                            <p><IoLocationOutline size="24" color="#61788E"  /> {content.footer.adress} </p>
+                            <p><IoIosPhonePortrait size="24" color="#61788E" /> +212 688739472 </p>
+                           
                         </Col>
                     </Row>
-                    <Row className="justify-content-center text-center mt-1">
-                            <p className="pelux"> POWRED BY <a href="https://pelux.ma/"> pelux.ma </a> </p>
+                 
+                    <Row className="justify-content-center text-center mt-5 mb-5 reseau-sciaux">
+                    
+                    <a target="_blank" href="https://facebook.com/DoctoliveApp"> 
+                    <img className="img-fluid icon-logo" src={"/image/facebook-logo.svg"} />
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
+                
+                <img className="img-fluid icon-logo" src={"/image/instagram-icon.svg"} />
+                </a>
+
+                <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
+                
+                <img className="img-fluid icon-logo" src={"/image/linkedin-logo.svg"} />
+                </a>
+
+                <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
+                
+                <img className="img-fluid icon-logo" src={"/image/email-logo.svg"} />
+                </a>
+
+                <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
+                
+                <img className="img-fluid icon-logo" src={"/image/tiktok-logo.svg"} />
+                </a>
+                          
                     </Row>
                 </div>
             </div>
