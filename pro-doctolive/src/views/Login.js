@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight:'bold',
     borderWidth:2,
     borderColor:"#C6E8EE",
+    color:"#FFF",
     lineHeight:3,
     backgroundColor:'#1AB9B9'  
     
@@ -126,7 +127,7 @@ export default function SignIn(props) {
                   <span className="desc-lgn-pro">
                     Vous n'êtes pas encore un praticien DOCTOLIVE ?
                   </span>
-                  <a href="https://doctor.doctolive.ma" className={"rejoignez"} >Rejoignez-nous</a>
+                  <a href="https://doctorlive.thesporteasy.com/" className={"rejoignez"} >Rejoignez-nous</a>
                 </div>
           </Card>
           <Card body className="ml-2">
@@ -137,7 +138,7 @@ export default function SignIn(props) {
               <span >
                 <span className="desc-lgn-pro">Vous êtes patient et vous souhaitez prendre rendez-vous en ligne ?</span>
               </span>
-              <a className="" href="https://doctolive.ma"  className={"rejoignez"}>Prendre RDV en ligne</a>
+              <a className="" href="https://doctolive.thesporteasy.com/"  className={"rejoignez"}>Prendre RDV en ligne</a>
               </div>
           </Card>
               </div>

@@ -7,6 +7,8 @@ export default {
         prenomLabel: "First name",
         emailLabel: "E-mail adress",
         phoneLabel:"Phone number",
+        dateLabel:"Date naissance",
+        lieuLabel:"Lieu naissance",
         confirm_password:"Confirmer le mot de passe",
         new_password:" New Password",
         old_password: "Password "
@@ -80,6 +82,9 @@ export default {
         rdv: "Rendez-vous",
         dropDown1: "My account",
         dropDown2: "log out",
+        proche: "Mes proches",
+         vous_etes_etudiant_en_medcine:"vous êtes étudiant en médcine?"
+
     },
     footer: {
         partner: "Become a partner doctor",

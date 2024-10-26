@@ -83,8 +83,15 @@ export default function Documents() {
     }
     if(!savedPictures.length) {
         return (
-            <Container>
+            <Container className=''>
+                      <div className='col-md-12 text-center pt-5 '>
+                <h3>Mes documents </h3>
                 <h3> {content.documents.aucun} </h3>
+
+          
+                    <img src='/image/Add-files-bro.svg' />
+
+                </div>
             </Container>
         )
     }

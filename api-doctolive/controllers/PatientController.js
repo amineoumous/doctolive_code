@@ -5,6 +5,7 @@ const Consultation = require('../models/consultation')
 const Documents = require('../models/documents')
 const Medecin = require('../models/medecin')
 const Horaire = require('../models/horaire')
+const Proches = require('../models/proches')
 const {Op} = require('sequelize');
 const moment = require('moment')
 
@@ -245,7 +246,6 @@ exports.storeElement = async (req, res) => {
         res.status(500).json({ error: true, validator:false, message: 'server problem' })  
     }
 }
-
 exports.addConsultation = async (req, res) => {
     try {
         let resultError= validationResult(req).array();
@@ -289,6 +289,47 @@ exports.addConsultation = async (req, res) => {
                 TRIGGGER MESSAGE TO DOCTOR            
             ****************************** */
             res.status(201).json({ error: false, addedConsultation });
+        })
+        .catch((err) => res.status(400).json({ error: true, err, validator:false,  message: 'On a pas pus ajouter ce utilisateur, une erreur inconue est survenue' }))
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: true, validator:false, message: 'server problem' })  
+    }
+}
+exports.addProche = async (req, res) => {
+       
+    try {
+        let resultError= validationResult(req).array();
+        if(resultError.length > 0){  
+            return res.status(400).json({ error: true, validator:true, message: resultError });
+        }
+
+        let {  
+            nom,
+            prenom,
+            date_naissance,
+            lieu_naissance,
+            address,
+            gender,
+        } = req.body;
+
+  
+
+    
+        Proches.create({
+            nom,
+            prenom,
+            date_naissance,
+            lieu_naissance,
+            address,
+            gender,
+            patientId: req.user.id
+        })
+        .then((addedProches) => {   
+            /* **************** 
+                TRIGGGER MESSAGE TO DOCTOR            
+            ****************************** */
+            res.status(201).json({ error: false, addedProches });
         })
         .catch((err) => res.status(400).json({ error: true, err, validator:false,  message: 'On a pas pus ajouter ce utilisateur, une erreur inconue est survenue' }))
     } catch (error) {
@@ -342,7 +383,22 @@ exports.getUserDocuments = async (req, res) => {
         res.status(500).json({ error: true, validator:false, message: 'server problem' })  
     }
 }
-
+exports.getUserProches = async (req, res) => {
+    try {
+        Proches.findAll({ 
+            where:{
+                patientId: req.user.id
+            }
+        })
+        .then((proches) => {   
+            res.status(201).json({ error: false, proches });
+        })
+        .catch((err) => res.status(400).json({ error: true, err, validator:false,  message: 'Nous avons pas pus importer vos rendez-vous' }))
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: true, validator:false, message: 'server problem' })  
+    }
+}
 exports.getUserNextAppintoments = async (req, res) => {
     try {
         let parameters = [
@@ -464,6 +520,9 @@ exports.updateThisUSer = async (req, res) => {
             phone,
             nom,
             prenom,
+            lieu_naissance,
+            date_naissance,
+            gender,
         } = req.body;
 
 
@@ -472,6 +531,9 @@ exports.updateThisUSer = async (req, res) => {
             phone,
             nom,
             prenom,
+            lieu_naissance,
+            date_naissance,
+            gender,
         }, {
             where: { id: req.user.id }
         })

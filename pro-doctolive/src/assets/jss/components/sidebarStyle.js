@@ -141,9 +141,13 @@ const sidebarStyle = theme => ({
     position: "relative",
     display: "block",
     textDecoration: "none",
+    [theme.breakpoints.down("sm")]: {
+      padding:"1px 24px"
+    },
     "&:hover,&:focus,&:visited,&": {
       color: whiteColor
     }
+
   },
   itemLink: {
     width: "auto",
@@ -296,6 +300,10 @@ const sidebarStyle = theme => ({
     overflow: "auto",
     width: "100%",
     zIndex: "200000",
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor:"#fff",
+      borderBottom:44
+    },
     marginTop:60,
     overflowScrolling: "touch"
   },

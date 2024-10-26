@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 
 
 import Config from './../../../EndPoint';
@@ -7,7 +7,7 @@ import Config from './../../../EndPoint';
 
 import {useAppContext} from './../../../context/AppointementContext'
 
-import {MdVideocam} from 'react-icons/md'
+import {MdVideocam,MdOutlineFormatAlignLeft } from 'react-icons/md'
 
 
 import ReactFancyBox from './../../../components/fancyBox/fancybox/ReactFancyBox'
@@ -16,20 +16,23 @@ import ReactFancyBox from './../../../components/fancyBox/fancybox/ReactFancyBox
 import Button from './../../../components/CustomButtons/Button'
 
 import CalendarAvailability from './../../../components/MedecinWidget/CalendarAvailability'
+import Review from './../../../components/review/Review'
+
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-
+import { BiMap } from "react-icons/bi";
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-
+import { FaGraduationCap,FaUsers,FaDollarSign,FaRegClock,FaRegUser,FaRegCalendarPlus      } from "react-icons/fa";
 
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import GraduateIcon from './../../../assets/icons/svgr/Experience'
 import Persson from './../../../assets/icons/svgr/User'
 import Cash from './../../../assets/icons/svgr/Money'
 import Clock from './../../../assets/icons/svgr/Clock'
+
 
 import {Row, Col, Container} from 'react-bootstrap'
 
@@ -52,11 +55,106 @@ export default function ProfilMedecin ({medecinInfo}) {
     const content = locale === "ar" ? contentAR.profilPage : locale === "en" ? contentEN.profilPage : contentFR.profilPage;
   
     const medecinInfos= medecinInfo? medecinInfo : {specialites:[], tarifs: [],  diplomes: [], info:{}, horaires: []}
-
+    const [activeLink, setActiveLink] = useState('');
+    const presentationRef = useRef(null);
+    const essentialRef = useRef(null);
+    const scheduleRef = useRef(null);
+  
+    const scrollToDiv = (ref) => {
+      if (ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+  
+    const handleLinkClick = (section) => {
+      setActiveLink(section);
+      switch (section) {
+        case 'presentation':
+          scrollToDiv(presentationRef);
+          break;
+        case 'essential':
+          scrollToDiv(essentialRef);
+          break;
+        case 'schedule':
+          scrollToDiv(scheduleRef);
+          break;
+        default:
+          break;
+      }
+    };
     return (
+        <div>
+        <Row className="header-profile">
+        <Container>
+        <Col xs="12" md="12" lg="12" xl="12" className='display-flex-i' >
+                      <figure>
+                          <img src={ !medecinInfos.image ?  "/image/medecin/homme.jpg" : `${Config.BACKEND_URL}/${medecinInfos.image}` } alt="" className="img-fluid img-medecin" />
+                      </figure>
+                      <div className='name-medecin'>
+                       <h4>{"DR. " + medecinInfos.nom + ' ' + medecinInfos.prenom} </h4>
+                     
+                       {
+    medecinInfos?.specialites?.map((spec, index) => (
+        <span className='specialite-i' key={index}>
+            {spec.name}
+            {index < medecinInfos.specialites.length - 1 ? ", " : ""}
+        </span>
+    ))
+}
+                      
+<Review medium rating={5} />
+                      </div>
+                      <img src="/image/medecin/world-health-day.svg"  alt="" className="img-grp-medecin show-only-desktop " />
+                      
+
+        </Col>       
+        </Container>
+
+        </Row>
+        <Row>
+            <Container className='for-navigate-doctor'>
+                <Col xs="12" md="6" lg="6" xl="12">
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <a
+          href="#"
+          className={`link-medecin ${activeLink === 'presentation' ? 'active-header' : ''}`}
+          onClick={() => handleLinkClick('presentation')}
+          style={{ flex: 1 }}
+        >
+          Présentation
+        </a>
+        <a
+          href="#"
+          className={`link-medecin ${activeLink === 'essential' ? 'active-header' : ''}`}
+          onClick={() => handleLinkClick('essential')}
+          style={{ flex: 1 }}
+        >
+          L’essentiel
+        </a>
+        <a
+          href="javascript:void(0)"
+          className={`link-medecin ${activeLink === 'schedule' ? 'active-header' : ''}`}
+          onClick={() => handleLinkClick('schedule')}
+          style={{ flex: 1 }}
+        >
+          Horaire
+        </a>
+        <a
+          href="#"
+          className='link-medecin'
+          style={{ flex: 1 }}
+        >
+          Carte
+        </a>
+      </div>
+                </Col>
+            </Container>
+        </Row>
+        <Row className='bg-md'>
             <Container>
-            <Row className="pt-5 mt-5">
-                <Col xs="12" md="12" lg="12" xl="3" >
+            
+            <Row className="pt-5 ">
+                <Col xs="12" md="12" lg="12" xl="3" className='hide'  >
                     <div className="aside">
                         <div className="sidebar-profil">
                             <div className="profil-content">
@@ -66,7 +164,7 @@ export default function ProfilMedecin ({medecinInfo}) {
                                 <div className="medecin-details">
                                     {/* <small>Primary care - Internist</small> */}
                                     <h3>{"DR. " + medecinInfos.nom + ' ' + medecinInfos.prenom} </h3>
-                                    {!medecinInfos.teleconsultationIsDisponible ? null : <h4> <span> <MdVideocam /> {content.availableVideo} </span> </h4>} 
+
 
                                     <ul className="contacts">
                                         <li>
@@ -90,14 +188,20 @@ export default function ProfilMedecin ({medecinInfo}) {
                         </div>
                     </div>
                 </Col>
-                <Col xs="12" md="12" lg="12" xl="9" className="">
+
+                <Col xs="12" md="12" lg="12" xl="12" className="">
+                 <p className='text-center title-medecin-p'>DOCTOLIVE.... CABINET DE DEMAIN....</p>
+                </Col>
+
+                <Col xs="12" md="12" lg="12" xl="8" className=""  ref={presentationRef}>
                     <div className="box_general">
+
                     <div className="card">
-        <div className="card-body">
+        {/* <div className="card-body">
             <div className="">
                 <Row className="justify-content-around m-0">
         
-                    { medecinInfos.pictures.map((picture, index) => {
+                    { medecinInfos?.pictures?.map((picture, index) => {
                         return (
                             <div className="cabinet-img-container ml-2" key={index}>
                             <ReactFancyBox
@@ -115,7 +219,7 @@ export default function ProfilMedecin ({medecinInfo}) {
                         <Button onClick={() => setShowMap(true)} color="primary"> {content.seeMap} </Button>
                 </Row>
             </div>
-        </div>
+        </div> */}
         {
             showDisponibilite ? 
             <ShowDisponibilite showDisponibilite={showDisponibilite} medecin={medecinInfos} handleClose={() => setShowDisponibilite()} content={content} />
@@ -124,9 +228,10 @@ export default function ProfilMedecin ({medecinInfo}) {
         
     </div>
                         <div className="indent_title_in">
-                            <Persson />
-                            <h3> {content.about} </h3>
-                            <p> {content.general} </p>
+                            {/* <Persson /> */}
+                            {/* <h3> {content.about} </h3> */}
+                            <MdOutlineFormatAlignLeft color='#61788E' size={20} />
+                            <h3> {content.general} </h3>
                         </div>
                         <div className="wrapper_indent">
                             <p> {medecinInfos.presentation} </p>
@@ -143,25 +248,76 @@ export default function ProfilMedecin ({medecinInfo}) {
                         </div>
                         <hr />
                         <div className="indent_title_in">
-                            <GraduateIcon />
-                            <h3>{content.parcour}</h3>
-                            <p> {content.descriptionPArc} </p>
+                            <FaGraduationCap color='#61788E' size={20} />
+                            <h3>{content.formation}</h3>
+              
                         </div>
                         <div className="wrapper_indent">
-                            {/* <p>Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Nullam mollis. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapi.</p> */}
-                            <h4> {content.formation} </h4>
+                          
                             <TimeLine items={medecinInfos.diplomes.filter((dip) => dip.type === "education")} />
-                            <h4>{content.award}</h4>
+                          
+                        </div>  
+                        <hr />
+
+                        <div className="indent_title_in2">
+                       
+                            <img src="/image/microscope.svg" width={20} height={20} />
+                            <h3>{content.experience}</h3>
+                            {/* <p> {content.descriptionPArc} </p> */}
+                        </div>
+                        <div className="wrapper_indent">
+                          
                             <TimeLine items={medecinInfos.diplomes.filter((dip) => dip.type === "experience")} />
-                            <h4> {content.experience} </h4>
+                         
+                        </div>  
+                        <hr />
+
+
+                        <div className="indent_title_in">
+                            <FaUsers  color='#61788E' size={20} />
+                            <h3>{content.award}</h3>
+                            {/* <p> {content.descriptionPArc} </p> */}
+                        </div>
+                        <div className="wrapper_indent">
+                     
                             <TimeLine items={medecinInfos.diplomes.filter((dip) => dip.type === "award")} />
                         </div>  
                         <hr />
 
-                        <div className="indent_title_in">
-                            <Cash />
+                       
+                    </div>
+
+
+
+                    <div className="box_general" ref={essentialRef}>
+                    <div className="indent_title_in2">
+                    <img src="/image/map.svg" width={20} height={20} />
+                    <h3>{"Adresse"}</h3>
+                            {/* <p> {content.details} </p> */}
+                        </div>
+                    <div className="wrapper_indent">
+                    <ul className="contacts">
+                                        <li>
+                                            <h6> {content.profilPage} </h6> 
+                                            {
+                                                !medecinInfos.adress ? 
+                                                "Vous n'avez pas encore spécidier vos information d'accés" : 
+                                                (medecinInfos.adress.streetName? medecinInfos.adress.streetName : "") + " " + 
+                                                (medecinInfos.adress.buildingName? medecinInfos.adress.buildingName : "") + " " + 
+                                                (medecinInfos.adress.floor? "étage " + medecinInfos.adress.floor : "") + " " + 
+                                                (medecinInfos.adress.sector? medecinInfos.adress.sector : "") + ", " + 
+                                                (medecinInfos.adress.codePostal? medecinInfos.adress.codePostal : "") + " - " + 
+                                                (medecinInfos.city ? medecinInfos.city.name  : "") 
+                                            } 
+                                        </li>
+                                        <li><h6> {content.secretariat} </h6>{medecinInfos.phone} </li>
+                                    </ul>
+                    </div>
+
+                    <div className="indent_title_in">
+                            <FaDollarSign  color='#61788E' size={20} />
                             <h3> {content.tarif} </h3>
-                            <p> {content.details} </p>
+                            {/* <p> {content.details} </p> */}
                         </div>
                         <div className="wrapper_indent">
                         <p> {content.honore} </p>
@@ -187,10 +343,12 @@ export default function ProfilMedecin ({medecinInfo}) {
                                 </table>
                             </div>
                         </div>
-                        <hr />
 
-                        <div className="indent_title_in">
-                            <Clock />
+                        </div>
+
+                 <div className="box_general"   ref={scheduleRef} >
+                 <div className="indent_title_in">
+                 <FaRegClock  color='#61788E' size={20} />
                             <h3> {content.horaire} </h3>
                             <p> {content.detailsHeures} </p>
                         </div>
@@ -212,24 +370,83 @@ export default function ProfilMedecin ({medecinInfo}) {
                             
                             </div>
                         </div>
-                    </div>
+
+                        </div>
+                </Col>
+
+                <Col  xs="12" md="12" lg="12" xl="4" >
+                <div className="bg-white">
+                <h2 className='title-md-witb'>En résumé</h2>
+                <hr />
+                <Row>
+                <div className="info-item-md">
+                            <FaRegUser  User color='#61788E' size={17} />
+                            <h4> {"Accepte les nouveaux patients sur Doctolive"} </h4>
+                            {/* <p> {content.details} </p> */}
+                        </div>
+
+                <div className="info-item-md">
+                            <BiMap  User color='#61788E' size={17} />
+                            <h4> {"Accepte les nouveaux patients sur Doctolive"} </h4>
+                            {/* <p> {content.details} </p> */}
+                </div>
+                <div className="info-item-md">
+                {!medecinInfos.teleconsultationIsDisponible ? null : (
+                <>
+                    <MdVideocam color='#61788E' size={17}/>
+                    <h4>{content.availableVideo}</h4>
+                </>
+                )}
+                    
+                </div>
+                </Row>
+                <Row className="justify-content-around m-0 ">
+                        <Button className={"btn-see-rdv"} onClick={() => setShowDisponibilite(medecinInfos)} color="primary"><img src="/image/icon-user.svg" /> {' '+content.seeDispo2} </Button>
+                        {/* <Button onClick={() => setShowMap(true)} color="primary"> {content.seeMap} </Button> */}
+                </Row>
+                </div>
+                
                 </Col>
             </Row>
          </Container>
+         </Row>
+         </div>
         )
     
 }
 
 export async function getServerSideProps(context) {
-    const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.id}`)
-    const data = await res.json();
+    try {
+        const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.id}`, {
+            headers: {
+                'Origin': Config.CURRENT_URL, // Use environment variable
+            }
+        });
 
-    console.log(data)
+        if (!res.ok) {
+            console.error("Failed to fetch data:", res.statusText);
+            return {
+                notFound: true,
+            };
+        }
 
-    return {
-      props: {medecinInfo: data.medecin},
+        const data = await res.json();
+
+        console.log("Fetched data:", data);
+
+        const medecinInfo = data?.medecin || { specialites: [], tarifs: [], diplomes: [], info: {}, horaires: [] };
+
+        return {
+            props: { medecinInfo },
+        };
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return {
+            notFound: true,
+        };
     }
 }
+
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {

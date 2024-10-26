@@ -51,14 +51,16 @@ const useStyles = makeStyles(styles);
       <Navbar fixed="top" className={classes.navWrap} collapseOnSelect={true}  expand="lg" as="nav" onToggle={isToggled}>
           <Container className={classes.navContent} > 
 
-              <div className= "d-flex">
+              <div className= "d-flex header-100-md">
               <Link href={`/`}>
                     <a  href="/" to="/" className="navbar-brand" > 
-                      <img className="img-fluid logo doctolive" src ="/image/doctolive.png" />
+                      <img className="img-fluid logo doctolive" src ="/image/Doctolive.svg" />
+
+
                   </a>
                 </Link>
                 
-                  <Navbar.Toggle aria-expanded={colapsed} aria-controls="basic-navbar-nav" className="mx-5" >
+                  <Navbar.Toggle aria-expanded={colapsed} aria-controls="basic-navbar-nav" className="" >
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
@@ -131,9 +133,9 @@ const useStyles = makeStyles(styles);
                         {/* <Nav.Item as="li"><Nav.Link href='/' to="/"> Je suis un patient   </Nav.Link></Nav.Item> */}
                         {/* <Nav.Item className="login" as="li"><Nav.Link href='/signin' to="/signin"> login   </Nav.Link></Nav.Item> */}
                         {/* <li className="nav-item"> <a href="https://doctolive.ma/" className="nav-link"> Je suis un patient </a> </li> */}
-                        <li className="nav-item"> <a href="https://doctolive.ma/" className="nav-link"> Je suis un patient </a> </li>
+                        <li className="nav-item"> <a href="https://doctolive.thesporteasy.com/" className="nav-link"> Je suis un patient </a> </li>
                         {/* <li className="nav-item login"> <a href="https://pro.doctolive.ma/" className="nav-link"> login </a> </li> */}
-                        <li className="nav-item login"> <a href="https://pro.doctolive.ma/signin" className="nav-link"> login </a> </li>
+                        <li className="nav-item login"> <a href="https://doctolivepro.thesporteasy.com/signin" className="nav-link"> login </a> </li>
                       </Nav>
                   </Navbar.Collapse>
               </Row>

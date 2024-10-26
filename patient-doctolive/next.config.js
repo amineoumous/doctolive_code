@@ -4,7 +4,8 @@ module.exports = {
   //   locales: ['en', 'fr', 'ar'],
   //   defaultLocale: 'fr',
   // },
-  
+
+  exportTrailingSlash:true,
   webpack(config, options) {
     const { isServer } = options;
     config.module.rules.push({

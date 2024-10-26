@@ -11,6 +11,7 @@ import { useAuth } from './../../context/AuthContext';
 export default function CalendarAvailability(props) {
     const [startDate, setStartDate] = useState(moment())
     const [calandar, setMedecinCalendar] = useState([])
+    const [showall, setShowall] = useState(false)
 
     const {userData} = useAuth();
 
@@ -40,7 +41,7 @@ export default function CalendarAvailability(props) {
     }
 
     const createHoursSoir = (day) => {
-        const disponibiliteDay = props.showDisponibilite.horaires.find(h => h.jour === day.format('dddd'));
+        const disponibiliteDay = props.medecin?.horaires.find(h => h.jour === day.format('dddd'));
 
         if(!disponibiliteDay) return []
 
@@ -49,8 +50,11 @@ export default function CalendarAvailability(props) {
         let hour = moment(disponibiliteDay.debut_soir, 'HH:mm:ss');
 
         let i=0;
-
-         while (hour.isBefore(endHour) && i< 100 ){
+        let k=2;
+        if(showall){
+            k=100;
+        }
+         while (hour.isBefore(endHour) && i< k ){
 
             
             let element= undefined;
@@ -74,7 +78,7 @@ export default function CalendarAvailability(props) {
                 >
                     <span className="hour"> {hour.format('HH:mm')} </span>
                 </div>
-                : <div key={i}  className=" hours-element-disabled" > <div className="hour-empty"> </div> </div>
+                : <div key={i}  className=" hours-element-disabled" > <div className="hour-empty"><span>-:-</span>   </div> </div>
             table.push(hourDiv)
             i++
             hour = hour.add(disponibiliteDay.duree, 'minutes')
@@ -86,7 +90,7 @@ export default function CalendarAvailability(props) {
 
 
     const createHoursMatin = (day) => {
-        const disponibiliteDay = props.showDisponibilite.horaires.find(h => h.jour === day.lang("fr").format('dddd'));
+        const disponibiliteDay = props.medecin?.horaires.find(h => h.jour === day.lang("fr").format('dddd'));
 
         if(!disponibiliteDay) return []
 
@@ -95,8 +99,11 @@ export default function CalendarAvailability(props) {
         let hour = moment(disponibiliteDay.debut_matin, 'HH:mm:ss');
 
         let i=0;
-
-         while (hour.isBefore(endHour) && i< 100 ){
+        let k=2;
+        if(showall){
+            k=100;
+        }
+         while (hour.isBefore(endHour) && i< k ){
             let element= undefined;
 
             if(calandar){
@@ -118,7 +125,7 @@ export default function CalendarAvailability(props) {
                 >
                     <span className="hour">{hour.format('HH:mm')}  </span>
                 </div>
-                : <div key={i} className=" hours-element-disabled" > <div className="hour-empty"> </div> </div>
+                : <div key={i} className=" hours-element-disabled" > <div className="hour-empty"><span>-:-</span></div> </div>
 
             table.push(hourDiv)
             i++
@@ -129,7 +136,7 @@ export default function CalendarAvailability(props) {
     }
 
     useEffect( async () => {
-        const res =  await fetch(`${Config.BACKEND_URL}/consultation/medecin-calendar/${props.showDisponibilite.id}/${startDate}`, {
+        const res =  await fetch(`${Config.BACKEND_URL}/consultation/medecin-calendar/${props.medecin?.id}/${startDate}`, {
             headers: {
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
@@ -171,15 +178,21 @@ export default function CalendarAvailability(props) {
 
                 <div className="range-calendar">
                     <div className="calendar-pagination">
-                        <button className="" id="date-range-preview" onClick={() => changeDate('preview')}  >  {props.locale === "ar" ? <MdChevronRight/>: <MdChevronLeft />}  </button>
+                        <button className="" id="date-range-preview" onClick={() => changeDate('preview')}  >  {props.locale === "ar" ? <MdChevronRight color='#1AB9B9'/>: <MdChevronLeft color='#1AB9B9' />}  </button>
                     </div>
                     <div className="calendar">
-                        {props.showDisponibilite? createCalendar() : null}
+                        {props.medecin? createCalendar() : null}
                     </div>
                     <div className="calendar-pagination">
-                        <button className="" id="date-range-next" onClick={() => changeDate('next')}  >  {props.locale === "ar" ? <MdChevronLeft />: <MdChevronRight />} </button>
+                        <button className="" id="date-range-next" onClick={() => changeDate('next')}  >  {props.locale === "ar" ? <MdChevronLeft  color='#1AB9B9' />: <MdChevronRight  color='#1AB9B9' />} </button>
                     </div>
                 </div>
+            </div>
+            <div className='text-center w-100 divider-t'>
+            <a href="javascript:void(0)" className="show-all"  onClick={() => setShowall(!showall)}  > 
+            
+            VOIRE PLUS D’HORAIRES
+            </a>
             </div>
         </section>
     )

@@ -14,20 +14,27 @@ import { useAuth } from "context/Auth";
 // import { Switch } from '@material-ui/core';
 import { Switch, Route } from "react-router-dom";
 import RendezVous from './RendezVous';
+import { FaSearch } from "react-icons/fa";
 
 function Gestion() {
-  const [categories, setCategories] = useState([]);
   const [events, setEvents] = useState([]);
   const [errors, setErrors] = useState({});
   const {UserData} = useAuth();
+  console.log(UserData)
 
   useEffect(() => {
 
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+
     Axios.get(`${Config.BACKEND_URL}/medecin/consultation`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `token ${UserData.token}`,
-    }})
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `token ${UserData.token}`,
+        },
+        params: {
+            date: today, // Add today's date as a query parameter
+        }
+    })
     .then(response =>{
 
       if(response){
@@ -54,64 +61,37 @@ function Gestion() {
 
  
 
-    Axios.get(`${Config.BACKEND_URL}/medecin/tarifs`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `token ${UserData.token}`,
-      }})
-    .then(response =>{
-
-      if(response){
-        if (!response.data.error) { 
-
-          if(response.data.typeConsultation){
-            setCategories(response.data.typeConsultation.reverse())
-          }
-          
-        }else{
-          // setErrors( (errors) => {return {events: true}})
-        }
-      }
-     
-    })
-    .catch(err=> {
-      if(err.response){
-
-        if(err.response.data.errors){
-          if(err.response.data.errors.name === "SequelizeConnectionError"){
-
-          }
-          if(err.response.status === 500){
-  
-          }
-          if(err.response.status === 403){
-  
-          }
-        }
-        
-      }
-      
-    });
 
     return () => {
       
     }
     
   }, []);
-  const setNewCategory =(newCategory) => {
-    setCategories( (categories) => [newCategory, ...categories]);
-  }
 
 
 
   return (
     <div className="gestion">
-      <h1> Géstion des événements </h1>
-      <Row className="mt-5 mx-0">
-        <Category categories={categories} setCategories={setCategories} events={events} setNewCategory={setNewCategory} />
-      </Row>
-      <Row className="mt-5 mx-0">
-        <Calandar categories={categories}  events={events} setEvents={setEvents} errors />
+
+      <Row className="mt-5 mx-0 bg-white">
+        <div className='header-calendar'>
+         <div className='first-letter-name'>
+             <span>{UserData?.user?.prenom?.charAt(0)}
+             <span className='color-red'>.</span></span>
+         </div>
+         <div className='search-and-name display-flex'>
+          <div className='input-search-cal'>
+            <FaSearch  color='#D3D5DF' size={25}/>
+            <input className='' />
+          </div>
+          <span className='name-user'>
+            Bonjour {UserData?.user?.prenom} {UserData?.user?.nom}
+          </span>
+
+         </div>
+      
+        </div>
+        <Calandar    events={events} setEvents={setEvents} errors />
       </Row>
     </div>
   );

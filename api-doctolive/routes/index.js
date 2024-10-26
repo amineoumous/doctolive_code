@@ -31,7 +31,7 @@ module.exports = function(app, io) {
 app.use(function (req, res, next) {
 
   try {
-    const allowedOrigins = ['http://127.0.0.1:8020', 'http://localhost:3000', 'http://127.0.0.1:9000', 'http://localhost:3001','http://localhost:3002', "https://doctolive.ma/", "https://doctor.doctolive.ma/", "https://pro.doctolive.ma/", "https://admin.doctolive.ma/"];
+    const allowedOrigins = ['http://127.0.0.1:8020', 'http://localhost:3000','http://localhost:9000', 'http://127.0.0.1:9000', 'http://localhost:3001','http://localhost:3002', "https://doctolive.ma/", "https://doctor.doctolive.ma/", "https://pro.doctolive.ma/", "https://admin.doctolive.ma/","https://doctolive.thesporteasy.com/","https://doctorlive.thesporteasy.com/"];
     const origin = req.headers.origin;
     //  console.log(origin, req.headers )
     // return next();

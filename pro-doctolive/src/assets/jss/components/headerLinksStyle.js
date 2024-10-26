@@ -100,7 +100,8 @@ const headerLinksStyle = theme => ({
       width: "100%"
     },
     display: "inline-block",
-    width:"20%"
+    width:"20%",
+    textAlign:"end"
   },
   searchWrapper: {
     [theme.breakpoints.down("sm")]: {
@@ -113,9 +114,9 @@ const headerLinksStyle = theme => ({
   accueilLink: {
     color: "#FFF",
     fontFamily: "Roboto",
-    fontSize: "18px",
+    fontSize: "14px",
     fontStyle:"normal",
-    fontWeight: "700"
+    fontWeight: "500"
   }
 });
 

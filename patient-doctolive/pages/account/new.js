@@ -59,7 +59,7 @@ export default function Auth() {
             
                     <Col md="6">
                     <Card>
-                            <CardBody className="justify-content-center card-connexion d-flex flex-column aligh-items-center">
+                            <CardBody className="justify-content-center card-connexion d-flex flex-column aligh-items-center z-index-mille">
                             <h4 className="text-center">{content.new.alreadyHave} </h4>
                                 <Row className="justify-content-center">
                                     <Collapse in={signinWay === "auth"}>
@@ -73,9 +73,9 @@ export default function Auth() {
                             </CardBody>
                         </Card>
                         <Card>
-                            <CardBody className="justify-content-center card-register d-flex flex-column aligh-items-center">
+                            <CardBody className="justify-content-center card-register d-flex flex-column aligh-items-center z-index-mille">
                             <h4 className="text-center">{content.new.newIn} </h4>
-                                <Row className="justify-content-center">
+                                <Row className="justify-content-center ">
                                     <Collapse in={signinWay === "inscription"}>
                                         <div className="">
                                             <InscriptionForm setUserData={setUserData} />

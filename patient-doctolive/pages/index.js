@@ -267,7 +267,7 @@ const Services = ({content}) => (
             <div className="row justify-content-between align-items-center">
                 <div className="col-lg-3 col-sm-12">
                     <div className="single_feature">
-                        <div className="single_feature_part">
+                        <div className="single_feature_part text-center">
                          
                             <img src="image/OnlineConsulting.png" alt="" />
                           
@@ -279,7 +279,7 @@ const Services = ({content}) => (
                 </div>
                 <div className="col-lg-3 col-sm-12">
                   <div className="single_feature">
-                        <div className="single_feature_part">
+                        <div className="single_feature_part text-center">
                        
                                   
                             <img src="image/security-doc.png" alt="" />
@@ -291,7 +291,7 @@ const Services = ({content}) => (
                 </div>
                 <div className="col-lg-3 col-sm-12">
                   <div className="single_feature">
-                        <div className="single_feature_part">
+                        <div className="single_feature_part text-center">
                      
                                   
                             <img src="image/adv-info.png" alt="" />
@@ -304,7 +304,7 @@ const Services = ({content}) => (
 
                 <div className="col-lg-3 col-sm-12">
                     <div className="single_feature">
-                        <div className="single_feature_part">
+                        <div className="single_feature_part text-center">
                         <img src="image/Soins.png" alt="" />
                            
         
@@ -316,20 +316,20 @@ const Services = ({content}) => (
             </div>
 
             <div className="row justify-content-between align-items-center doctolive-cest">
-                <div className="col-lg-3 col-sm-12 ">
+                <div className="col-lg-3 col-sm-12 text-center pb-3">
                 <span className='start'>Doctolive c’est...</span>
                 </div>
 
-                <div className="col-lg-3 col-sm-12 text-center">
+                <div className="col-lg-3 col-sm-12 text-center pb-3">
                 <h4>10 Milliers</h4>
                  <span className='start2'>patients</span>
   
                 </div>
-                <div className="col-lg-3 col-sm-12 text-center">
+                <div className="col-lg-3 col-sm-12 text-center pb-3">
                 <h4> 23 000 </h4>
                  <span className='start2'>personnels de santé</span>
                 </div>
-                <div className="col-lg-3 col-sm-12 text-center">
+                <div className="col-lg-3 col-sm-12 text-center pb-3">
                 <h4> 50% </h4>
                  <span className='start2'>consultations</span>
                 </div>
@@ -339,10 +339,11 @@ const Services = ({content}) => (
             <div className="col-lg-8 col-sm-12 ">
                 <h3>Votre santé. Vos données.</h3>
                 <p>La confidentialité de vos informations personnelles est une préiorité absolue pour Doctolive et guide notre action au quotidien.</p>
-                <a className='engagement'> Découvrir nos engagements</a>
+                <a className='engagement show-only-desktop'> Découvrir nos engagements</a>
                 </div>
                 <div className="col-lg-4 col-sm-12 text-center ">
                 <img src="/image/padlock-inject.png" alt="" className="img-fluid" />
+                <a className='engagement show-only-mobile'> Découvrir nos engagements</a>
                 </div>
             </div>
 
@@ -350,11 +351,12 @@ const Services = ({content}) => (
             <div className="col-lg-8 col-sm-12 ">
                 <h3>Découvrez l’application mobile Doctolive</h3>
                 <p>Pour accéder à vos praticiens à tout moment, où que vous soyez.</p>
-                <a><img src="/image/play-s.png" alt="" className="img-fluid" /></a>
-                <a><img src="/image/app-s.png" alt="" className="img-fluid" /></a>
+                <a><img src="/image/play-s.png" alt="" className="img-fluid  show-only-desktop" /></a>
+                <a><img src="/image/app-s.png" alt="" className="img-fluid  show-only-desktop" /></a>
                 </div>
                 <div className="col-lg-4 col-sm-12 text-center ">
                 <img src="/image/character--inject-62.png" alt="" className="img-fluid" />
+                <a className='engagement show-only-mobile'> télécharger l’app mobile</a>
                 </div>
             </div>
 

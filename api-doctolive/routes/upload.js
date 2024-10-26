@@ -9,6 +9,7 @@ const verifAuth = require('./../middleware/auth')
 
 router.post("", UplodController.uploadModecinProfile);
 router.post("/medecin-profil", verifAuth, haveAuthorisation.isMedecin, UplodController.uploadModecinProfile);
+router.post("/patient-profil", verifAuth, haveAuthorisation.isPatient, UplodController.uploadPatientProfile);
 router.post("/cabinet", verifAuth, haveAuthorisation.isMedecin, UplodController.uploadCabinet);
 router.post("/document", verifAuth, UplodController.uploadDocument);
 router.delete("/document", verifAuth, UplodController.deleteDocument);

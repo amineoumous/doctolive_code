@@ -3,10 +3,11 @@
 const moment = require('moment')
 // const fs = require('fs');
 const fs = require('fs').promises;
-
+const path = require('path');
 
 
 const Medecin = require('../models/medecin');
+const Patient = require('../models/patient');
 const Pictures = require('../models/image');
 const Documents = require('../models/documents');
 
@@ -66,6 +67,70 @@ exports.uploadModecinProfile = async (req, res) => {
       res.status(500).json({ error: true, message: 'server problem' })
   }      
 }
+exports.uploadPatientProfile = async (req, res) => {
+  try {
+    // Check if the file data is provided
+    if (!req.body.data) {
+      return res.status(400).json({ error: true, msg: 'No file uploaded' });
+    }
+
+    const file = req.body.data;
+
+    // Validate and extract the base64 string
+    const base64Match = file.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+    if (!base64Match) {
+      return res.status(400).json({ error: true, msg: 'Invalid file format' });
+    }
+
+    const ext = base64Match[1].split('/').pop(); // Extract the file extension
+    const base64Image = base64Match[2]; // Extract the base64 encoded data
+
+    const fileName = `${moment().format('YYYY-MM-DD-HH-mm:ss')}.${ext}`;
+
+    const validFileTypes = ["jpeg", "png", "svg", "jpg"];
+
+    if (validFileTypes.includes(ext)) {
+      // Save the image to the filesystem
+      const filePath = path.join('public', 'patient-profil', fileName);
+      await fs.writeFile(filePath, base64Image, { encoding: 'base64' });
+
+      try {
+        const thisMedecin = await Patient.findOne({ where: { id: req.user.id } });
+        const oldPicture = thisMedecin.getDataValue('image');
+
+        if (oldPicture) {
+          try {
+            await fs.unlink(path.join('public', oldPicture));
+          } catch (err) {
+            console.error('Error deleting old image:', err);
+          }
+        }
+
+        await Patient.update({ image: `/patient-profil/${fileName}` }, { where: { id: req.user.id } });
+
+        return res.status(200).json({
+          error: false,
+          data: {
+            realName: req.body.realName,
+            fileType: ext,
+            fileName,
+            filePath: `https://api.doctolive.ma/patient-profil/${fileName}`,
+            fileLink: `/patient-profil/${fileName}`,
+            base64Image:base64Image
+          },
+        });
+      } catch (err) {
+        console.error('Error updating patient profile:', err);
+        return res.status(500).json({ error: true, msg: 'Error updating patient profile' });
+      }
+    } else {
+      return res.status(400).json({ error: true, msg: "Invalid file type" });
+    }
+  } catch (err) {
+    console.error('Server error:', err);
+    return res.status(500).json({ error: true, msg: 'Server problem' });
+  }
+};
 
 exports.uploadCabinet = async (req, res) => {
   try {

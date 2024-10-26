@@ -7,7 +7,7 @@
         padding: 0,
         border: 0,
         borderRadius: 0,
-        height: "120px",
+        height: "86px",
         backgroundColor: "#1ab9b9",
         transition: "background-color 0.3s",
     },

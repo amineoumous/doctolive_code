@@ -116,7 +116,7 @@ export default function Appointments() {
             <h1 className="text-center"> {content.appointments.notAuth} </h1>
             <div className="text-center">
                 <Link href="/login">
-                    <a className="link btn btn-primary"> {content.appointments.takeapp} </a>
+                    <a className="link btn btn-primary btn-update-pro"> {content.appointments.takeapp} </a>
                 </Link>
             </div>
         </div>
@@ -127,8 +127,11 @@ export default function Appointments() {
                 <h1 className="text-center"> {content.appointments.myapp} </h1>
                 <p className="text-center"> {content.appointments.noApp} </p>
                 <div className="text-center">
+                    <img src="/image/calendar-pro.svg" />
+                </div>
+                <div className='text-center'>
                     <Link href="/">
-                        <a className="link btn btn-primary"> {content.appointments.takeapp} </a>
+                        <a className="link btn btn-primary btn-update-pro"> {content.appointments.takeapp} </a>
                     </Link>
                 </div>
                 <Row className="m-0 justify-content-center">
@@ -244,7 +247,7 @@ function CardDetailsAppointment({consultation, content}){
       
                                 <Col  md="6">
                                 <Link href={`/consultation/${consultation.id}`}>
-                                    <a className="link btn btn-primary"> {content.appointments.cardApp.seeInfosShared} </a>
+                                    <a className="link btn btn-primary btn-update-pro"> {content.appointments.cardApp.seeInfosShared} </a>
                                 </Link> 
                                 </Col>
                             </Row>

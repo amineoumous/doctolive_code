@@ -102,7 +102,9 @@ export default function AuthForm(props){
     e.preventDefault();
         setResponse(old =>  { return {...old, sending: true}});
 
-        if(!emailError && !passwordError){
+        if(!emailError){
+
+
           let data = {email, password};
 
           fetch(`${Config.BACKEND_URL}/patient/auth`,{

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useRef } from 'react'
 
 import {  TextField } from '@material-ui/core';
 
@@ -33,7 +33,7 @@ export default function Profile() {
     const {locale} = router;
     const content = locale === "ar" ? contentAR.profile : locale === "en" ? contentEN.profile : contentFR.profile;
 
-
+    const fileInputRef = useRef(null); // Create a ref for the file input
 
     const[state, setState] = useState({
         nom: "" ,
@@ -42,6 +42,8 @@ export default function Profile() {
         phone: "",
         adresse: "",
         date_naissance:"",
+        lieu_naissance:"",
+        gender:"",
         image:null
 
     })
@@ -57,27 +59,30 @@ export default function Profile() {
     const [profileUpdated, setProfileUpdated] = useState(false)
     const [passwordChanged, setPasswordChanged] = useState(false)
 
-    useEffect( async () => {
-        
-        const res = await fetch(`${Config.BACKEND_URL}/patient/verify`, {
-            headers: {
-                'Accept': 'application/json', 
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await fetch(`${Config.BACKEND_URL}/patient/verify`, {
+              headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Origin': Config.CURRENT_URL,
                 'Authorization': `token ${userData.token}`,
               },
-        })
-        const data = await res.json()
-
-        if(data.patient){
-        setState(data.patient)
-
-
-        }
-       
-        return () => {
-            
-        }
-    }, []);
+            });
+            const data = await res.json();
+    
+            if (data.patient) {
+              setState(data.patient);
+            }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, [userData.token]); // Dependency array to rerun the effect if userData.token changes
+    
 
 
     const handleConfirmation = () => {
@@ -146,7 +151,68 @@ export default function Profile() {
         
       }
 
-
+      const handleFileChange = async (event) => {
+        const file = event.target.files[0];
+    
+        if (file) {
+          const data = {
+            filePath: await toBase64(file), // Convert the file to Base64
+            fileType: file.type,
+            realName: file.name,
+          };
+    
+          try {
+            const response = await uploadImage(data);
+            console.log(response)
+            setState((prevState) => ({
+              ...prevState,
+              image: response.data?.fileLink , // Update the state with the uploaded image path
+            }));
+          } catch (error) {
+            console.error('Failed to upload image:', error);
+          }
+        }
+      };
+    
+      const toBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    
+      const uploadImage = async (data) => {
+        try {
+          return new Promise(async (resolve, reject) => {
+            let response = await fetch(`${Config.BACKEND_URL}/upload/patient-profil`, {
+              method: 'POST',
+              body: JSON.stringify({
+                data: data.filePath,
+                fileType: data.fileType,
+                realName: data.realName,
+              }),
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `token ${userData.token}`,
+              },
+            });
+    
+            response
+              .json()
+              .then((json) => {
+                return resolve(json);
+              })
+              .catch((err) => {
+                return reject(err);
+              });
+          });
+        } catch (err) {
+          console.error('Error uploading image:', err);
+          throw err;
+        }
+      };
+    
     const handleChange = (event) => {
         let target= event.target;
         setState((old) => {return { ...old, [target.name]: target.value }});
@@ -160,186 +226,82 @@ export default function Profile() {
         <div className="profile-body pt-5 pb-5">
 
         
-        <div className="container rounded bg-white pt-5 pb-5">
+        <div className="container rounded  pt-5 pb-5">
     <div className="row">
-        <div className="col-md-3 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img className=" mt-5" width="150px" src={state.image ? state.image : "/image/patient.png"} />
-                <span className="font-weight-bold">{`${state.nom} ${state.prenom}`}</span>
-                <span className="text-black-50">{state.email}</span>
-                <span> </span>
-            </div>
+        <div className="col-md-3 img-profile-patient paper-rectangle  triangle-corner top-left top-right bottom-left bottom-right">
+   
+        <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+        <input
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        ref={fileInputRef} // Use the ref here
+        onChange={handleFileChange}
+      />
+      <img
+        className="mt-5"
+        width="150px"
+        src={state.image ? `${Config.BACKEND_URL}/`+state.image : '/image/patient.png'}
+        onClick={() => fileInputRef.current.click()} // Trigger the file input click
+        style={{ cursor: 'pointer' }}
+      />
+  <h3 className="font-weight-bold mt-5">{`${state.nom} ${state.prenom}`}</h3>
+</div>
         </div>
-        <div className="col-md-5 border-right">
-            <div className="p-3 py-5">
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="text-right">{content.heading}</h4>
-                </div>
-                <Row className=" mt-2">
-                   <Col lg="6"> 
-                        <TextField
-                            fullWidth
-                            required
-                            label= {content.nomLabel}
-                            variant="outlined"
-                            value={state.nom}
-                            name="nom"
-                            onChange={handleChange}
-                            placeholder= {content.placeholder1}
-                          />
-                   </Col>
-                   <Col lg="6"> 
-                        <TextField
-                            fullWidth
-                            required
-                            label= {content.prenomLabel}
-                            variant="outlined"
-                            value={state.prenom}
-                            name="prenom"
-                            onChange={handleChange}
-                            placeholder= {content.placeholder2}
-                          />
-                   </Col>
-                </Row>
-                <Row className="mt-4">
-                <Col lg="12"> 
-                        <TextField
-                            fullWidth
-                            required
-                            label= {content.emailLabel}
-                            variant="outlined"
-                            value={state.email}
-                            name="email"
-                            onChange={handleChange}
-                            placeholder= {content.placeholder3}
-                          />
-                   </Col>
-                </Row>
-                <Row className="mt-4">
-                <Col lg="12"> 
-                        <TextField
-                            fullWidth
-                            required
-                            label= {content.phoneLabel}
-                            variant="outlined"
-                            value={state.phone}
-                            name="phone"
-                            onChange={handleChange}
-                            placeholder= {content.placeholder2}
-                          />
-                   </Col>
-                </Row>
+        <div className="col-md-9 p-0">
+            <div className='col-md-12 bg-white p-0'>
+                <h2 className='vos-donnees text-center'>Vos données:</h2>
 
-                <Row className="justify-content-center mt-3">
-                    <Collapse in={profileUpdated} >
-                        <div id="example-collapse-text">
-                            <Alert variant="success"> Success </Alert>
-                        </div>
-                    </Collapse>
-                </Row>
+             <div className='detail-patient'>
 
-                <Row className="mt-5 justify-content-center">
-                    <SubmitButton onClick={handleSubmit} color="primary"> Enregistrer le profile </SubmitButton>
-                </Row>
-                <Row className="mt-4 p-0">
-                    <Col lg="12" className="p-0">
-                        <Row>
-                            <h4> Changement de mot de passe </h4>
-                        </Row>
-                        <FormControl className="mt-3" fullWidth variant="outlined">
-                            <InputLabel htmlFor="standard-adornment-password"> {content.old_password} </InputLabel>
-                            <OutlinedInput
-                                id="standard-adornment-password"
-                                type={mdp.showPassword ? 'text' : 'password'}
-                                value={mdp.old_password}
-                                onChange={handleChangeMdp}
-                                required={true}
-                                label={content.old_password}
-                                name="old_password"
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={ () => setMdp(old =>{return  {...old, showPassword: !state.showPassword}})} 
-                                    >
-                                    {mdp.showPassword ? <MdVisibility /> : <MdVisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                            />
-                            </FormControl>
-                            <FormControl className="mt-3" fullWidth variant="outlined">
-                            <InputLabel htmlFor="standard-adornment-password"> {content.new_password} </InputLabel>
-                            <OutlinedInput
-                                id="standard-adornment-password"
-                                type={mdp.showPassword ? 'text' : 'password'}
-                                value={mdp.password}
-                                onChange={handleChangeMdp}
-                                required={true}
-                                label={content.new_password}
-                                name="new_password"
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={ () => setMdp(old =>{return  {...old, showPassword: !mdp.showPassword}})} 
-                                    >
-                                    {mdp.showPassword ? <MdVisibility /> : <MdVisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                            />
-                            </FormControl>
-                            <FormControl className="mt-3" fullWidth variant="outlined">
-                            <InputLabel htmlFor="standard-adornment-password"> {content.confirm_password} </InputLabel>
-                            <OutlinedInput
-                                id="standard-adornment-password"
-                                type={mdp.showPassword ? 'text' : 'password'}
-                                value={mdp.confirm_password}
-                                onChange={handleChangeMdp}
-                                required={true}
-                                label={content.confirm_password}
-                                name="confirm_password"
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={ () => setMdp(old =>{return  {...old, showPassword: !mdp.showPassword}})} 
-                                    >
-                                    {state.showPassword ? <MdVisibility /> : <MdVisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                            />
-                            </FormControl>
-                    </Col>
-                </Row>
-
-                <Row className="justify-content-center mt-3">
-                    <Collapse in={passwordChanged} >
-                        <div id="example-collapse-text">
-                            <Alert variant="success"> Success </Alert>
-                        </div>
-                    </Collapse>
-                </Row>
-                <Row className="mt-5 justify-content-center">
-                    <SubmitButton onClick={handleConfirmation} color="primary"> Changer le mot de passe </SubmitButton>
-
-                </Row>
-                {/* <div className="row mt-3">
-                    <div className="col-md-6"><label className="labels">Country</label><input type="text" className="form-control" placeholder="country" value="" /></div>
-                    <div className="col-md-6"><label className="labels">State/Region</label><input type="text" className="form-control" value="" placeholder="state" /></div>
-                </div> */}
-                {/* <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="button">Save Profile</button></div> */}
+             <div className="label-with-text">
+                <label className="custom-label"> Date de naissance :</label>
+                <span className="text"> {state.date_naissance}</span>
             </div>
-        </div>
-        <div className="col-md-4">
-            <div className="p-3 py-5">
-                {/* <div className="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span className="border px-3 p-1 add-experience"><i className="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div className="col-md-12"><label className="labels">Experience in Designing</label><input type="text" className="form-control" placeholder="experience" value=""></div> <br>
-                <div className="col-md-12"><label className="labels">Additional Details</label><input type="text" className="form-control" placeholder="additional details" value=""></div> */}
+
+
+            <div className="label-with-text">
+                <label className="custom-label"> Lieu de naissance :</label>
+                <span className="text">    {state.lieu_naissance}</span>
             </div>
+
+            <div className="label-with-text">
+                <label className="custom-label"> Féminin / masculin :</label>
+                <span className="text">     {state.gender}</span>
+            </div>
+
+
+            <div className="label-with-text">
+                <label className="custom-label"> Adresse Email :</label>
+                <span className="text">{state.email}</span>
+            </div>
+
+
+            <div className="label-with-text">
+                <label className="custom-label">Numéro de téléphone :</label>
+                <span className="text">{state.phone}</span>
+            </div>
+
+      
+             
+             <div className='text-right'>
+              <a href='/account/profile_edit' className='btn btn-primary btn-update-pro'>
+              éditer votre profil
+              </a>
+             </div>
+             </div>
+               
+            </div> 
+        
         </div>
+   
+    </div>
+    <div className='row'>
+        <div className='col-md-12 text-center'>
+            
+        <img className=" mt-5 w-100"   src={"/image/person-with-a-cold-animate2.svg"} />
+        </div>
+
     </div>
 </div>
 </div>

@@ -10,6 +10,8 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Config from 'Config'
 
 // @material-ui/icons
 import Store from "@material-ui/icons/Store";
@@ -23,24 +25,19 @@ import Accessibility from "@material-ui/icons/Accessibility";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 
-import Danger from "components/Typography/Danger.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
-
-import CardFooter from "components/Card/CardFooter.js";
-
 import styles from "assets/jss/views/dashboardStyle.js";
-import Consulting from 'assets/img/consultation2.svg'
-import imageMoney from 'assets/img/money-img.svg'
-import Accessibility2 from 'assets/img/access.svg'
-import {FcMoneyTransfer} from 'react-icons/fc'
+import {getSpecialitiesSearched, getCity} from 'services/medecin/MedecinService'
+import {Link} from 'react-router-dom'
+
 const useStyles = makeStyles(styles);
 
 export default function Pole() {
   const [categories, setCategories] = useState([]);
-  const [categorie, setCategorie] = useState(1);
+  const [medecin, setMedecin] = useState({});
 
+  const [categorie, setCategorie] = useState(1);
+  const [loadingMedecin, setLoadingMedecin] = useState(false);
+  const [isSearched, setIsSerached] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
   // Handle the change event when the user selects an option
@@ -64,6 +61,49 @@ export default function Pole() {
     alert('Button clicked!');
   };
   const classes = useStyles();
+
+  const [speciality, setSepeciality] = useState([]);
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+
+    getCity()
+    .then(result => {
+        setCities(result.data.cities)
+    })
+    .catch(err => {
+
+    });
+
+      return () => {
+          
+      }
+  }, [])
+
+  const handleSearchSpecialite = (e, newInputValue) => {
+    setMedecin(newInputValue)
+  }
+  
+  const handleSearchSpecialitea = (e, newInputValue) => {
+    if(newInputValue.length >0) {
+        setLoadingMedecin(true)
+        setIsSerached(true)
+        getSpecialitiesSearched(newInputValue)
+        .then(result => {    
+
+            setSepeciality([...result.data.speciality, ...result.data.medecins])
+            setLoadingMedecin(false)
+        })
+        .catch(err => {
+            setLoadingMedecin(false)
+
+        })
+    }else {
+        setIsSerached(false)
+    }
+       
+      
+  }
   return (
     <div>
       <GridContainer>
@@ -72,62 +112,52 @@ export default function Pole() {
         </div> 
     
           <div className="box_general_pole">
-          <h3 className='title_pole'>Qualifications</h3>
+          {/* <h3 className='title_pole'>Qualifications</h3> */}
           <Row>
         
-          <Col xs={12} md={4}>
+          <Col xs={12} md={12}>
                   <FormControl fullWidth>
-                  <select
-                  id="selectBox"
-                  className='select_pole form-control'
-                  value={selectedOption}
-                  onChange={handleSelectChange}
-                >
-                  <option value="">Select an option</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
+            
+                  <Autocomplete
+                               onInputChange={handleSearchSpecialitea}
+                               loading={loadingMedecin}
+                               noOptionsText={isSearched? "Aucun résultat ne corespond" : "Tapez pour obtenir plus de résultat"}
+                               groupBy={(option) => option.name? "specialite" : "medecin"}
+                                id="suggestion-medecin"
+                                loadingText="Chargement des médecin ou spécialité similaire"
+                                options={speciality}
+                                // disableClearable={true}
+                                debug
+                                getOptionLabel={(option) => option.nom? option.nom + " " + option.prenom + " " + option.email + " " + option.phone : option.name ? option.name : "" }
+                                renderOption={(option) => (
+                                    option.nom ?
+                                        <React.Fragment>
+                                            <Link className="d-flex" to ={`/doctor/${option.id}`}>
+                                            {option.image ? <span className="searchbar-result-profile-avatar "><img className="img-fluid" src={`${Config.BACKEND_URL}/${option.image}`} /></span> : null }
+                                            <span> Dr. {option.nom} {option.prenom} </span> 
+                                            </Link>
+                                            
+                                        </React.Fragment>
+                                    :
+                                        <React.Fragment>
+                                            {option.name}
+                                        </React.Fragment> 
+                                )}
+                                onChange={(e, newInputValue) => handleSearchSpecialite(e, newInputValue)} 
+                                value={medecin}
+                                style={{ width: "100%", height:"60px" }}
+                                renderInput={(params) => <TextField {...params} placeholder="Médecin, établissement, spécialité…" />}
+                                />
                     </FormControl>
                  
-            </Col>
-            <Col xs={12} md={4}>
-                  <FormControl fullWidth>
-                  <select
-                  id="selectBox"
-                  className='select_pole form-control'
-                  value={selectedOption}
-                  onChange={handleSelectChange}
-                >
-                  <option value="">Select an option</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
-                    </FormControl>
-                 
-            </Col>
-            <Col xs={12} md={4}>
-                  <FormControl fullWidth>
-                  <select
-                  id="selectBox"
-                  className='select_pole form-control'
-                  value={selectedOption}
-                  onChange={handleSelectChange}
-                >
-                  <option value="">Select an option</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
-                    </FormControl>
+           
                  
             </Col>
             </Row>
 
 
 
-          <h3 className='title_pole'>Etat Civil</h3>
+          {/* <h3 className='title_pole'>Etat Civil</h3>
           <Row>
         
           <Col xs={12} md={6}>
@@ -153,7 +183,7 @@ export default function Pole() {
                  
             </Col>
 
-            </Row>
+            </Row> */}
 
           <h3 className='title_pole'>Sexe</h3>
           <Row>
@@ -241,9 +271,12 @@ export default function Pole() {
                   onChange={handleSelectChange}
                 >
                   <option value="">Ville</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
+                  {cities.map(((ville, index) =>
+                                       
+                                        <option value={ville.id}>{ville.name}</option>
+                                    ))
+                                }
+         
                 </select>
                     </FormControl>
                  

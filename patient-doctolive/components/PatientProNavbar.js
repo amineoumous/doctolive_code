@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Navbar, Nav, Row, Container, } from 'react-bootstrap';
+import { Navbar, Nav, Row, Container, Col, } from 'react-bootstrap';
 // import {Link } from "react-router-dom";
 import Link from 'next/link'
 import { withRouter } from 'next/router'
@@ -35,7 +35,9 @@ import Button from "./CustomButtons/Button.js";
 import styles from "../assets/jss/PatientPublicNavbarStyle.js";
 import stylesDropdown from "../assets/jss/headerLinksStyle.js";
 
-import {  BsFillPersonFill } from 'react-icons/bs'
+import {  BsFillPersonFill  } from 'react-icons/bs'
+
+import {  FaRegUserCircle,FaUsers,FaRegCalendarAlt,FaFolder     } from 'react-icons/fa'
 
 const useStyles = makeStyles(styles);
 const useStyles1 = makeStyles(stylesDropdown);
@@ -85,15 +87,16 @@ function PatientPublicNavbar(props) {
 
                                         <div className= "d-flex header-100-md">
                                             <a  href="/" to="/" className="navbar-brand" > 
-                                                <div style={{display: "inline-block",
-                                                    width: "95px",
-                                                    height: "50px",
-                                                    backgroundImage: `url(/image/doctoLogo-white.png)`,
-                                                    backgroundRepeat: "no-repeat",
-                                                    backgroundPosition: "center",
-                                                    backgroundSize: "95px auto",}}>  </div> 
+                                               
+                                  <div style={{display: "inline-block",
+                                        marginTop:"21px",
+                                      
+                                       }}>  
+                                       
+                                       <img src='/image/Doctolive.svg' />
+                                  </div> 
                                             </a>
-                                            <Navbar.Toggle aria-expanded={colapsed} aria-controls="basic-navbar-nav" className="mx-5" >
+                                            <Navbar.Toggle aria-expanded={colapsed} aria-controls="basic-navbar-nav"  >
                                                 <span className="icon-bar"></span>
                                                 <span className="icon-bar"></span>
                                                 <span className="icon-bar"></span>
@@ -121,6 +124,24 @@ function PatientPublicNavbar(props) {
                                                             </Nav.Link> 
                                                         </Link>
                                                     </Nav.Item>
+
+                                                    <Nav.Item as="li"> 
+                                                        <Link href='/account/mes_proches' passHref>
+                                                            <Nav.Link className="" > 
+                                                                <span >  {content.pronavbar.proche} </span>
+                                                            </Nav.Link> 
+                                                        </Link>
+                                                    </Nav.Item>
+
+                                                
+                                                    <Nav.Item as="li"> 
+                                                        <Link href='/account/etudiant' passHref>
+                                                            <Nav.Link className="" > 
+                                                                <span >  {content.pronavbar.vous_etes_etudiant_en_medcine} </span>
+                                                            </Nav.Link> 
+                                                        </Link>
+                                                    </Nav.Item>
+
                                                 
                                                     <Hidden  mdUp implementation="css">
                                                         <Nav.Item as="li"> 
@@ -154,7 +175,7 @@ function PatientPublicNavbar(props) {
                                                         >
                                                         <BsFillPersonFill className={classes2.icons} />
                                                         <Hidden mdDown implementation="css">
-                                                            <p className={classes2.linkText}>{!userData.user? null : userData.user.email}</p>
+                                                            <p className={classes2.linkText}>{!userData.user? null : userData.user.nom}</p>
                                                         </Hidden>
                                                         </Button>
                                                         <Poppers
@@ -210,6 +231,38 @@ function PatientPublicNavbar(props) {
                                         </Row>
                                             
                                     </div>
+
+                                    <Hidden lgUp implementation="css" className={"w-100"}>
+                             
+                        <div className="only-mobile menu-patient-icon">
+                            <Row>
+                                <Col md={12} className="d-flex justify-content-around my-3 menu-with-icon">
+                                    <Link href='/account/profile' passHref>
+                                        <Nav.Link className={router.pathname === '/account/profile' ? 'active' : ''}>
+                                            <FaRegUserCircle  color={router.pathname === '/account/profile' ? '#FFFFFF' : '#38869C'} size={27} />
+                                        </Nav.Link>
+                                    </Link>
+                                    <Link href='/account/mes_proches' passHref>
+                                        <Nav.Link className={router.pathname === '/account/mes_proches' ? 'active' : ''}>
+                                            <FaUsers color={router.pathname === '/account/mes_proches' ? '#FFFFFF' : '#38869C'}  size={27} />
+                                        </Nav.Link>
+                                    </Link>
+                                    <Link href='/account/appointments' passHref>
+                                        <Nav.Link className={router.pathname === '/account/appointments' ? 'active' : ''}>
+                                            <FaRegCalendarAlt color={router.pathname === '/account/appointments' ? '#FFFFFF' : '#38869C'} size={27} />
+                                        </Nav.Link>
+                                    </Link>
+                                    <Link href='/account/documents' passHref>
+                                        <Nav.Link className={router.pathname === '/account/documents' ? 'active' : ''}>
+                                            <FaFolder  color={router.pathname === '/account/documents' ? '#FFFFFF' : '#38869C'}  size={27} />
+                                        </Nav.Link>
+                                    </Link>
+
+                                    
+                                </Col>
+                            </Row>
+                        </div>
+                    </Hidden>
                                     
                                 </Navbar>
                          

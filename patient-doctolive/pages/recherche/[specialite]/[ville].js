@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import {useState, useEffect} from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Container} from 'react-bootstrap'
 
 import Config from './../../../EndPoint'
 
 import MedecinWidget from './../../../components/MedecinWidget/MedecinWidget';
 import MapAccess from './../../../components/MedecinWidget/MapAccess';
 
-import Search from './../../../components/Search/Search'
+import Search from './../../../components/Searchtwo/Search'
 
 import { useRouter } from 'next/router';
 
@@ -52,15 +52,43 @@ export default function magasin({medecins, locations}) {
         
         <>
             <Head>
-                <title> DOCTOLIVE - Rechercher médecin </title>
+                <title> DOCTOLIVE - Rechercher médecin{medecins?.length} </title>
             </Head>
+
+            <div className= " ">
+                    <div className=" m-0">
+                        <section className= {classes.header}>
+                            <div className= {'header-search'} style={locale === "ar" ? { backgroundPosition: "bottom left", textAlign: "right"} : { backgroundPosition: "85% 75%"}}>
+                                <div className="container-fluid text-center" id="recherche-medecin">
+                                    {/* <div className="mb-3">
+                                        <h1 className={classes.h1}>  {content.resultResearch.noReseault} </h1>
+                                        <h2 className={classes.h2}> {content.heading2} </h2>
+                                    </div> */}
+                                    <Search content={content.resultResearch} locale={locale} />
+                                    </div>
+                            </div>
+                        </section>
+                        {/* <Row className='bg-white-s'>
+                            <Container>
+                                <Col lg={12} className='container-filter'>
+                                  
+                                </Col>
+                                
+                            </Container>
+                           
+
+                        </Row> */}
+                       
+                    </div>
+                    
+                </div>
+            
              
             {
-                medecins.length> 0 ?
-                <Row className="content-recherche m-0">
-                    <Col lg="7" md="12" xs="12">
-                        { !medecins ? null :
-                            medecins.map((researched, index) => {
+                medecins.length > 0 ?
+                <Row className="content-recherche m-0 bg-body-i">
+                    <Col lg="9" md="12" xs="12">
+                        {medecins?.map((researched, index) => {
                                 return(
                                     <div key= {index}>
                                         <MedecinWidget medecin={researched} locale={locale} content={content.resultResearch.widget} />
@@ -69,26 +97,18 @@ export default function magasin({medecins, locations}) {
                             })
                         }
                     </Col>
-                    <Col lg="5" md="12" xs="12" className="order-sm-last">
-                        <MapAccess apiKey={Config.apiKey} locations={locations} />
+                    <Col lg="3" md="12" xs="12" className="order-sm-last">
+                        {/* <MapAccess apiKey={Config.apiKey} locations={locations} /> */}
+                        <div className='carre-map text-center'>
+                        <img src={"/image/pin-round.png"} className="img-fluid mt-5" alt="User Image" />
+                            <p>J’autorise le traitement d’informations (dont mon adresse IP)</p>
+
+                        </div> 
                     </Col>
                 </Row>
                 :
                 <div className= " ">
-                    <div className=" m-0">
-                        <section className= {classes.header}>
-                            <div className= {classes.bakgroudContainer} style={locale === "ar" ? {backgroundImage: `url(/image/search.svg)`, backgroundPosition: "bottom left", textAlign: "right"} : {backgroundImage: `url(/image/search.svg)`, backgroundPosition: "85% 75%"}}>
-                                <div className="container-fluid" id="recherche-medecin">
-                                    <div className="mb-3">
-                                        <h1 className={classes.h1}>  {content.resultResearch.noReseault} </h1>
-                                        <h2 className={classes.h2}> {content.heading2} </h2>
-                                    </div>
-                                    <Search content={content.resultResearch} locale={locale} />
-                                    </div>
-                            </div>
-                        </section>
-                       
-                    </div>
+             <h1 className={classes.h1}>  {content.resultResearch.noReseault} </h1>
                     
                 </div>
             }
@@ -98,16 +118,32 @@ export default function magasin({medecins, locations}) {
 }
 
 export async function getServerSideProps(context) {
-    const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.specialite}/${context.params.ville}`)
-    const data = await res.json()
-    if(data.error){
-        return {
-            // props: {medecins: data.medecins, locations: data.medecins.map((medecin) => medecin.adress)},
-            props: {medecins: [], locations: []},
-          }
+    const { specialite, ville } = context.params;
+  
+    const url = `${Config.BACKEND_URL}/medecin/${specialite}/${ville}`;
+    const res = await fetch(url, {
+      headers: {
+        'Origin': Config.CURRENT_URL,  // Replace with your frontend URL
+      },
+    });
+  
+    const data = await res.json();
+  
+    console.log("Data:", data);
+  
+    if (data.error) {
+      return {
+        props: {
+          medecins: [],
+          locations: [],
+        },
+      };
     }
+  
     return {
-      props: {medecins: data.medecins, locations: data.medecins.map((medecin) => medecin.adress)},
-    //   props: {medecins: [], locations: []},
-    }
+      props: {
+        medecins: data.medecins,
+        locations: data.medecins.map((medecin) => medecin.adress),
+      },
+    };
   }

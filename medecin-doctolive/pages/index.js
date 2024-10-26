@@ -66,7 +66,7 @@ function Avantages(){
     <div>
         <section className={classes.section + " repeat-icon-box"}>
             <Container >
-                <Row>
+                <Row className='mt-100'>
                   <h3 className={classes.sectionTitlle} >Découvrez les avantages de Doctolive</h3>
                 </Row>
                     

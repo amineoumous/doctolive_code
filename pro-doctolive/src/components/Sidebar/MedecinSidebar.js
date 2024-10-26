@@ -14,14 +14,17 @@ import Icon from "@material-ui/core/Icon";
 import ProfileIcon from 'assets/img/icon-profile.svg'
 import PoleIcon from 'assets/img/icon-pole.svg'
 // core components
-
+import { FaRegUserCircle } from "react-icons/fa";
 import styles from "assets/jss/components/sidebarStyle.js";
 import { BsCircleFill } from 'react-icons/bs';
+import { HiOutlinePresentationChartBar } from "react-icons/hi";
 
 import medecinImage from "assets/img/medecin/homme.jpg";
 import { useAuth } from "context/Auth";
-
+import { BsCameraVideo } from "react-icons/bs";
 import VideoChatIcon from 'assets/img/consultation.svg'
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { MdPublishedWithChanges } from "react-icons/md";
 const useStyles = makeStyles(styles);
 
 export default function Sidebar(props) {
@@ -149,6 +152,106 @@ export default function Sidebar(props) {
           </NavLink>
     </List>
   );
+
+  var linksmobile = (
+    <List className={classes.list}>
+     <NavLink
+            to={"/Profil"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"profil"}
+          >
+           
+              <FaRegUserCircle size={25} color="38869C" />
+            
+            
+           
+          </NavLink>
+ 
+          <NavLink
+            to={"/dashboard"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"dashboard"}
+          >
+           
+              <HiOutlinePresentationChartBar size={25} color="38869C" />
+            
+            
+           
+          </NavLink>
+        
+
+          <NavLink
+            to={"/agenda"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"Agenda"}
+          >
+              <FaRegCalendarAlt size={25} color="38869C" />           
+          </NavLink>
+        
+      
+          <NavLink
+            to={"/chat-video"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"dashboard"}
+          >
+              <BsCameraVideo size={25} color="38869C" />           
+          </NavLink>
+
+          <NavLink
+            to={"/pole"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"dashboard"}
+          >
+              <MdPublishedWithChanges size={25} color="38869C" />           
+          </NavLink>
+
+          
+      {/* <NavLink
+
+
+            to={"/chat-video"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"chat"}
+          >
+            <ListItem button className={classes.itemLink +" sidebar-color"}>
+                <img src={VideoChatIcon} alt={"Consultation"}
+                className={classNames(classes.itemIcon, {
+                  [classes.itemIconRTL]: props.rtlActive
+                })}
+              />
+            
+           
+            </ListItem>
+          </NavLink>
+
+          <NavLink
+            to={"/pole"}
+            className={" " + classes.item}
+            activeClassName="active"
+            key={"pole"}
+          >
+            <ListItem button className={classes.itemLink +" sidebar-color"}>
+                <img src={PoleIcon} alt={"Pôle emploi"}
+                className={classNames(classes.itemIcon, {
+                  [classes.itemIconRTL]: props.rtlActive
+                })}
+              />
+            
+              <ListItemText
+                primary={"Pôle emploi"}
+                className={classNames(classes.itemText) +" item-txt"}
+                disableTypography={true}
+              />
+            </ListItem>
+          </NavLink> */}
+    </List>
+  );
   var brand = (
     <div className={classes.logo}>
       <Link className={classNames(classes.logoLink, {
@@ -161,20 +264,21 @@ export default function Sidebar(props) {
   return (
     <div className="">
       <Hidden mdUp implementation="css">
-   
-          {/* {brand} */}
-          <div className={classes.sidebarWrapper}>
-             {/* <AdminNavbarLinks /> */}
-            {links}
+          <div className={classes.sidebarWrapper +" menu-patient-icon"}>
+          {linksmobile}
           </div>
       
       </Hidden>
+      
+   
       <Hidden smDown implementation="css">
         
           <div className={classes.sidebarWrapper}>{links}</div>
           
   
       </Hidden>
+
+      
     </div>
   );
 }

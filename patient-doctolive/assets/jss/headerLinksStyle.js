@@ -260,7 +260,14 @@ const dropdownStyle = theme => ({
       backgroundColor: primaryColor[0],
       color: whiteColor,
       ...primaryBoxShadow
-    }
+    },
+    [theme.breakpoints.down("sm")]: {
+      textAlign:"center",
+      color:"#FFF",
+      fontWeight: "600",
+    fontSize: "14px",
+
+      }
   }
 });
 

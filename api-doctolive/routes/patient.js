@@ -13,6 +13,7 @@ const verifAuth = require('./../middleware/auth')
     router.get('/info', verifAuth, PatientController.getAuthUser);
     router.get('/appointments', verifAuth, PatientController.getUserAppintoments);
     router.get('/documents', verifAuth, PatientController.getUserDocuments);
+    router.get('/proches', verifAuth, PatientController.getUserProches);
     router.get('/appointments/venir', verifAuth, PatientController.getUserNextAppintoments);
     router.get('/appointments/historique', verifAuth, PatientController.getUserOldAppintoments);
     router.get('/verify', verifAuth, PatientController.verifAuthUser);
@@ -22,6 +23,7 @@ const verifAuth = require('./../middleware/auth')
     router.get('/confirm/:token', PatientController.confirmPatient);
 
     router.post('/consultation', verifAuth, PatientController.addConsultation);
+    router.post('/proche', verifAuth, PatientController.addProche);
     router.put('/new-password', verifAuth, PatientController.newPassword);
 
     router.post('',[

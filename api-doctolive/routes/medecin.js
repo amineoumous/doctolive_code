@@ -21,6 +21,7 @@ const verifAuth = require('./../middleware/auth')
     router.delete('/tarif/:id', verifAuth, MedecinController.deleteMedecinTarif);
     router.put('/tarif/:id', verifAuth, MedecinController.updateMedecinTarif);
     router.get('/consultation', verifAuth, MedecinController.getThisMedecinConsultation);
+    router.post('/consultation', verifAuth, MedecinController.addConsultation);
     router.get('/info', verifAuth, MedecinController.getThisMedecin);
     router.put('/new-password', verifAuth, MedecinController.newPassword);
 

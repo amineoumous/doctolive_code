@@ -28,7 +28,7 @@ const tarif = connection.define('tarif', {
     active: {
         type: Sequelize.BOOLEAN,
         allowNull: true,
-        defaultValue: false,
+        defaultValue: true,
     },
 });
 

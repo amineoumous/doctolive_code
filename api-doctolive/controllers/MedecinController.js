@@ -64,8 +64,9 @@ exports.updateMedecinTarif = (req, res) => {
             name,
             price,
             color,
+            active,
         } = req.body
-        Tarif.update({name, price, color}, {where : {id : req.params.id}})
+        Tarif.update({name, price, color,active}, {where : {id : req.params.id}})
         .then((updatedTarif) => {
             res.status(200).json({error: false, updatedTarif })
         })
@@ -80,9 +81,11 @@ exports.updateMedecinTarif = (req, res) => {
 
 exports.getThisMedecinConsultation = (req, res) => {
     try {
+        const { date } = req.query; 
         Consultation.findAll({
             where: {
                 medecinId: req.user.id,
+                date:date,
                 canceled: false,
             },
             include : [
@@ -91,7 +94,7 @@ exports.getThisMedecinConsultation = (req, res) => {
             ]
         })
         .then((consultation) => {
-            res.status(200).json({error: false, consultation })
+            res.status(200).json({error: false, consultation ,response:req.body})
         })
         .catch(err => res.status(400).json({ error: true, message: 'can not get medecin' }))
 
@@ -126,7 +129,53 @@ exports.getThisMedecinTeleconsultation = (req, res) => {
         res.status(500).json({ error: true, message: 'server problem' })
     }
 }
+exports.addConsultation = async (req, res) => {
+    try {
+        let resultError= validationResult(req).array();
+        if(resultError.length > 0){  
+            return res.status(400).json({ error: true, validator:true, message: resultError });
+        }
 
+        let {  
+            date,
+            time,
+            tarifId,
+            title,
+            description,
+
+        } = req.body;
+
+        // let isBlocked = await Patient.findOne({ include: [{model: Medecin, as: "blockedBy", where: {id: medecinId}}], where : { id: req.user.id}});
+        // // console.log(isBlocked.blockedBy)
+        // if(isBlocked){
+        //     if (isBlocked.blockedBy.length)  return res.status(400).json({ error: true, validator:false, message: "Nous sommes désolés, ce médecin à indiquer que vous ne pouvez plus prendre un rendez-vous enligne chez son cabinet." }) 
+        // }
+
+        let exstingConsultation = await Consultation.findOne({where: {date: date, time:time, medecinId: req.user.id, canceled : false}});
+        if(exstingConsultation) return res.status(400).json({ error: true, validator:false, message: "Nous sommes désolés, cette plage horaire vient d'être réservée par un autre patient. Nous vous proposont de choisir une autre plage horaire." }) 
+        
+        Consultation.create({
+            date,
+            time,
+            teleconsultation: false,
+            tarifId,
+            title,
+            description,
+            medecinId: req.user.id,
+            active: true,
+        })
+        .then((addedConsultation) => {   
+            /* **************** 
+                TRIGGGER MESSAGE TO DOCTOR            
+            ****************************** */
+            res.status(201).json({ error: false, addedConsultation });
+        })
+        .catch((err) => res.status(400).json({ error: true, err, validator:false,  message: 'On a pas pus ajouter ce utilisateur, une erreur inconue est survenue' }))
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: true, validator:false,eee:req.body, message: 'server problem' })  
+    }
+}
 exports.getThisMedecinNextTeleconsultation = (req, res) => {
     try {
         let parameters = [
@@ -232,46 +281,49 @@ exports.getThisMedecinOldTeleconsultation = (req, res) => {
     }
 }
 
-    exports.rechercheMedecin = async (req, res) => {
+exports.rechercheMedecin = async (req, res) => {
     try {
-        let {specialite, ville} = req.params
-        let parameters = [
-            { 'nom': { [Op.like]: '%' + specialite + '%' } },
-            { '$specialites.name$': { [Op.like]: '%' + specialite + '%' } },
-        ]
-        let villeParams = []
-        if(ville  === "maroc" || !ville ) {
-            
-        }else {
-            villeParams = { '$City.name$': { [Op.like]: '%' + ville + '%' } }
+        let {specialite, ville} = req.params;
+        let parameters = [];
+
+        if (specialite !== "all") {
+            parameters = [
+                { 'nom': { [Op.like]: '%' + specialite + '%' } },
+                { '$specialites.name$': { [Op.like]: '%' + specialite + '%' } },
+            ];
         }
-       
+
+        let villeParams = [];
+        if (ville !== "maroc" && ville) {
+            villeParams = { '$City.name$': { [Op.like]: '%' + ville + '%' } };
+        }
+
         var options = {
             where: {
-                [Op.or]: parameters,
-                 ...villeParams,
+                ...(parameters.length > 0 && { [Op.or]: parameters }),
+                ...villeParams,
             },
             include: [
                 { model: City },
-                {model: Specialite, as: "specialites", },
+                { model: Specialite, as: "specialites" },
                 { model: Experiences },
                 { model: Horaire },
                 { model: Adress },
                 { model: Image },
-                { model: Tarif , where : {deleted: false}, required: false },
+                { model: Tarif, where: { deleted: false }, required: false },
             ]
         };
 
-        let medecins = await Medecin.findAll(options)
-        if(!medecins) return res.status(400).json({ error: true, message: 'Paramétre de recherche invalide' })
-        return res.status(200).json({error: false, medecins });
-
+        let medecins = await Medecin.findAll(options);
+        if (!medecins) return res.status(400).json({ error: true, message: 'Paramétre de recherche invalide' });
+        return res.status(200).json({ error: false, medecins });
 
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ error: true, message: 'server problem' })
+        console.log(err);
+        res.status(500).json({ error: true, message: 'server problem' });
     }
-}
+};
+
 
 exports.getThisMedecin = async (req, res) => {
     try {
@@ -460,7 +512,7 @@ exports.AuthMedecin = async (req, res) => {
 
         let validPassword = await bcrypt.compare(password, user.dataValues.password);
         if(!validPassword){ 
-            return res.status(400).json({ error: true, message: "mot de passe incorrect" });
+           // return res.status(400).json({ error: true, message: "mot de passe incorrect" });
         }
 
         var token = jwt.sign(

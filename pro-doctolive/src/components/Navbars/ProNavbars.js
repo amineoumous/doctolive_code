@@ -28,37 +28,12 @@ export default function Header(props) {
   });
   return (
     <AppBar className={classes.appBar + appBarClasses}>
-      <Toolbar className={classes.container}>
-        {/* <div className={classes.flex}>
-
-          {
-               routes.map(prop => {
-                 if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
-                  return <Link key={prop.path} to={prop.layout + prop.path} className={classes.title}>
-                            { prop.name }
-                          </Link>
-                 }
-                 return null;
-               })
-          }
-        </div> */}
-     
-        <Container>
- 
+      <Toolbar className={classes.container}>     
+        <Container className="p-0">
             <ProNavbarLink {...props} />
-       
-         
         </Container>          
        
-        <Hidden mdUp implementation="css">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={props.handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden>
+
       </Toolbar>
     </AppBar>
   );

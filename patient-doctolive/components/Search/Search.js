@@ -5,7 +5,7 @@ import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Col } from 'react-bootstrap';
+import { Col,Row } from 'react-bootstrap';
 // @material-ui/icons
 
 import Link from 'next/link'
@@ -45,6 +45,9 @@ const style = theme=>( {
         
         [theme.breakpoints.down("sm")]: {
             justifyContent: 'center',
+        backgroundColor:"transparent !important",
+
+            
         }
     },
     searchBarQuery:{
@@ -54,7 +57,7 @@ const style = theme=>( {
         position: "relative",
        
         width: "403px",
-        marginLeft:10,
+      
 
         [theme.breakpoints.down("sm")]: {
             flex: "0 0 100%",
@@ -69,7 +72,11 @@ const style = theme=>( {
         display: "flex",
         width: "100%",
         height:60,
-
+        borderRadius:30,
+        
+        [theme.breakpoints.down("sm")]: {
+           marginBottom:10
+        },
         '& .searchbar-input-icon' : {
             position: "absolute",
             top: 18,
@@ -93,7 +100,7 @@ const style = theme=>( {
     searchbarPlace: {
         "-ms-flex":" 0 0 490px",
         flex:" 0 0 490px",
-        marginRight: "12px",
+   
         position: "relative",
         width: "490px",
         [theme.breakpoints.down("sm")]: {
@@ -258,10 +265,10 @@ export default function SearchInput({content, locale}) {
         
         <div className={classes.searchContent}>
 
-          
-           <Col lg="10" md="10" className="no-padding-left" >
+          <Row>
+           <Col lg="9" md="9" xs="12"   className="center-form no-padding-left" >
                <form className={classes.searchBar} onSubmit={submiting}>
-                   <div className={classes.searchBarQuery+" with-vorder-right"}>
+                   <div  lg="3" md="3"  xs="12" className={classes.searchBarQuery+" with-vorder-right"}>
                            <div className={classes.searchInputWrapper +" search"}>
                                 <BsSearch className={locale === "ar" ? "searchbar-input-icon-ar":"searchbar-input-icon"} />
                                <Autocomplete
@@ -297,7 +304,7 @@ export default function SearchInput({content, locale}) {
                                 />
                             </div>
                     </div>
-                    <div className={classes.searchbarPlace}>
+                    <div lg="3"  xs="12" md="3" className={classes.searchbarPlace}>
                             <div className={classes.searchInputWrapper +" search"} style= {{overflow: "hidden",}}> 
                                 <MdLocationOn className={locale === "ar" ? "searchbar-input-icon-ar":"searchbar-input-icon"}  />
                                 <Autocomplete
@@ -318,8 +325,9 @@ export default function SearchInput({content, locale}) {
                                     </span>  
                                 </button>
                             </div>
-                    </div>                       
-                    <button className={classes.searchSubmitButton + " btn btn-submit"} role="button" type="submit" >  
+                    </div>    
+                                       
+                    <button lg="3"  xs="12" md="3" className={classes.searchSubmitButton + " btn btn-submit"} role="button" type="submit" >  
                         <span className={"text-btn-element"}>{locale === "ar" ? "Rechercher ":"Rechercher "}  </span><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1.33854 12.3216C0.98099 12.3216 0.644884 12.1881 0.392043 11.9456C0.139228 11.7031 0 11.3806 0 11.0376C0 10.6947 0.139228 10.3722 0.392043 10.1297L4.52975 6.16051L0.392043 2.19136C0.139228 1.94884 0 1.62638 0 1.28341C0 0.940451 0.139228 0.617986 0.392043 0.375467C0.913974 -0.12518 1.76316 -0.125131 2.28506 0.375467L7.36924 5.25256C7.62205 5.49508 7.76128 5.81755 7.76128 6.16051C7.76128 6.50347 7.62205 6.82594 7.36924 7.06848L2.28504 11.9456C2.0322 12.1881 1.69606 12.3216 1.33854 12.3216ZM1.33854 0.490664C1.12682 0.490664 0.915099 0.56796 0.753917 0.722602C0.59775 0.872409 0.511746 1.07155 0.511746 1.28341C0.511746 1.49527 0.59775 1.69442 0.753917 1.84422L5.07253 5.98694C5.12051 6.03297 5.14748 6.09541 5.14748 6.16051C5.14748 6.22561 5.12051 6.28805 5.07253 6.33408L0.753917 10.4768C0.59775 10.6266 0.511746 10.8258 0.511746 11.0376C0.511746 11.2495 0.59775 11.4486 0.753917 11.5984C0.910084 11.7482 1.11771 11.8307 1.33854 11.8307C1.55937 11.8307 1.767 11.7482 1.92316 11.5984L7.00734 6.72134C7.1635 6.57154 7.24951 6.37239 7.24951 6.16053C7.24951 5.9487 7.1635 5.74953 7.00734 5.59972L1.92314 0.722602C1.76198 0.567985 1.55026 0.490664 1.33854 0.490664Z" fill="white"/>
 </svg>
@@ -327,6 +335,7 @@ export default function SearchInput({content, locale}) {
                     </button>
                 </form>
             </Col>
+            </Row>
         </div>  
         
   );

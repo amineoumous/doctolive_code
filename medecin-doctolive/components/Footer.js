@@ -45,7 +45,7 @@ export default function DivFooter(){
                 <div className="container">
                 <Row className="justify-content-around footer-element copyright-parent">
                         <Col xs="12" md="12" lg="12" className="copyright text-left">
-                           <img className="img-fluid logo" src={"/image/Doctolive.svg"} />
+                           <img className="img-fluid logo" src={"/image/footer-logo.svg"} />
                             <p>© 2021 Doctolive tous droits réservés.  </p>
                         </Col>
                 </Row>

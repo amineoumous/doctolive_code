@@ -7,6 +7,8 @@ export default {
         prenomLabel: "Prénom",
         emailLabel: "Adresse email",
         phoneLabel:"Numéro de téléphone",
+        dateLabel:"Date naissance",
+        lieuLabel:"Lieu naissance",
         confirm_password:"Confirmer le mot de passe",
         new_password:" Nouveau mot de passe",
         old_password: "Mot de passe "
@@ -86,6 +88,8 @@ export default {
         rdv: "Rendez-vous",
         dropDown1: "Mon compte",
         dropDown2: "Se déconnecter",
+        proche: "Mes proches",
+         vous_etes_etudiant_en_medcine:"vous êtes étudiant en médcine?"
     },
     footer: {
         partner: "Devenir Médecin partenaire",
@@ -174,7 +178,7 @@ export default {
         noReseault: "Désolé, nous n'avons trouvé aucun professionnel pour votre recherche… ",
         tryReseault: "Essayez avec d'autres critères de recherche. ",
         widget: {
-            availablevidéo: "Consultation vidéo disponible",
+            availableVideo: "Consultation vidéo disponible",
             notSpecified: "Le médecin n'a pas encore spécifier ces information d'accés",
             seeProfile: "Voir le profile",
             seeDispo: "Voir la disponibilité",
@@ -246,6 +250,7 @@ export default {
         secretariat: "Contact du secrétariat",
         about: "À propos de moi",
         general: "Présentation générale",
+        availableVideo: "Consultation vidéo disponible",
         specialite: "Spécialité",
         parcour: "Parcours",
         descriptionPArc: "Description du parcours du médecin",
@@ -253,6 +258,8 @@ export default {
         award: "Récompenses",
         experience: "expérience",
         seeDispo: "Afficher la disponibilité",
+        seeDispo2: "Prenez un rendez-vous en ligne",
+        
         seeMap: "Afficher la position à la map",
         tarif: "Tarifs",
         details: "Détail des prix de chaque type de consultation.",

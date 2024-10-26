@@ -185,7 +185,7 @@ export default function Appointement({medecinInfo}) {
             <div className="bg-white p-3">
                 <h3 className="text-center"> {content.takeApp} </h3>
             </div>  
-            <div>
+            <div className="scrollable-div">
                 <StepperManaging activeStep={activeStep} steps={content.steps} />
             </div>
             <div className="container">
@@ -202,24 +202,55 @@ export default function Appointement({medecinInfo}) {
     )
 }
 
+// export async function getServerSideProps(context) {
+//     const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.id}`);
+
+//     if(!res) {
+//         return {
+//             props: {medecinInfo: {}, error: true, message: "request failed"},
+//           }
+//     }
+//     const data = await res.json();
+
+//     if(!data || data.error) {
+//         return {
+//             props: {medecinInfo: {}, error: true, message: data.message},
+//           }
+//     }
+
+//     return {
+//       props: {medecinInfo: data.medecin},
+//     }
+// }
 export async function getServerSideProps(context) {
-    const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.id}`);
+    try {
+        const res = await fetch(`${Config.BACKEND_URL}/medecin/${context.params.id}`, {
+            headers: {
+                'Origin': Config.CURRENT_URL, // Use environment variable
+            }
+        });
 
-    if(!res) {
+        if (!res.ok) {
+            console.error("Failed to fetch data:", res.statusText);
+            return {
+                notFound: true,
+            };
+        }
+
+        const data = await res.json();
+
+        console.log("Fetched data:", data);
+
+        const medecinInfo = data?.medecin || { specialites: [], tarifs: [], diplomes: [], info: {}, horaires: [] };
+
         return {
-            props: {medecinInfo: {}, error: true, message: "request failed"},
-          }
-    }
-    const data = await res.json();
-
-    if(!data || data.error) {
+            props: { medecinInfo },
+        };
+    } catch (error) {
+        console.error("Error fetching data:", error);
         return {
-            props: {medecinInfo: {}, error: true, message: data.message},
-          }
-    }
-
-    return {
-      props: {medecinInfo: data.medecin},
+            notFound: true,
+        };
     }
 }
 

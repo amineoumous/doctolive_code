@@ -24,30 +24,59 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import Review from './../../components/review/Review'
 
 import moment from 'moment'
 export default function MedecinWidget(props) {
     const [showDisponibilite, setShowDisponibilite] = useState();
     const {content, locale} = props;
+
+
+    const [selectedHour, setSelectedHour] = useState()
+    const [selectedDate, setSelectedDate] = useState()
+
+
+    const { setUserTemporary } = useAppContext();
+
+    const router = useRouter()
+
+    const setDetails = (day, hour) => {
+        setSelectedDate(day);
+        setSelectedHour(hour)
+    }
+    const validateTime =  () => {
+        setUserTemporary({ date: selectedDate, time: selectedHour, medecinId: props.medecin.id });
+
+        return router.push({
+            pathname: `/doctor/${props.medecin?.id}/appointment`,
+        })
+    }
     return (
-        <div className="card">
+        <div className="card br-10">
         <div className="card-body">
             <div className="doctor-widget">
                 <div className="doc-info-left">
                     <div className="doctor-img">
-                        <a href="doctor-profile.html">
-                            <img src={props.medecin.image ? `${Config.BACKEND_URL}/${props.medecin.image}` : "/image/medecin/homme.jpg" } className="img-fluid" alt="User Image" />
+                        <a href={"/doctor/"+props.medecin.id}>
+                            <img src={props.medecin.image ? `${Config.BACKEND_URL}/${props.medecin.image}` : "/image/medecin/homme.jpg" } className="img-fluid img-100" alt="User Image" />
                         </a>
+                        <div className='show-only-mobile'>
+                        <Review medium rating={5} className={'show-only-mobile'} size={20} color={"red"} />
+
+                        </div>
+                      
                     </div>
                     <div className="doc-info-cont">
-                        <h3 className="doc-name"><a href="doctor-profile.html">Dr. {`${props.medecin.nom} ${props.medecin.prenom}`}</a></h3>
-                        {/* <p className="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p> */}
-                         {!props.medecin.teleconsultationIsDisponible ? null : <h4> <span> <MdVideocam /> {content.availableVideo} </span> </h4>} 
+                        <h3 className="doc-name"><a href={"/doctor/"+props.medecin.id} className='doc-name'>Dr. {`${props.medecin.nom} ${props.medecin.prenom}`}</a></h3>
+                        
                         {
                             props.medecin.specialites.map((specialite, index) => {
-                                return (<h4 key={index} className="doc-department">{!specialite.icon ? null : <img src={`${Config.BACKEND_URL}/${specialite.icon}`} className="img-fluid" alt="Speciality" />}{specialite.name}</h4>)
+                                return (<h4 key={index} className="doc-department-md">{!specialite.icon ? null : <img src={`${Config.BACKEND_URL}/${specialite.icon}`} className="img-fluid" alt="Speciality" />}{specialite.name}</h4>)
                             })
                         }
+                        {/* <p className="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p> */}
+                         {!props.medecin.teleconsultationIsDisponible ? null : <span className='mt-2'> <MdVideocam /> {content.availableVideo} </span> } 
+                     
                         <div className="clinic-details">
                             <p className="doc-location"><i className="fas fa-map-marker-alt"></i> 
                             {
@@ -73,19 +102,39 @@ export default function MedecinWidget(props) {
                                     )
                                 })
                                 }
-                            </Row>     
+                            </Row>    
+                       
+                         
+                        
+                            <div  className={'show-only-mobile'}>
+                        <Button className={'bolde-7 btn-color-primary'} onClick={() => setShowDisponibilite(props.medecin)} color="primary"> {content.seeDispo} </Button> 
+
+                        </div>
+                        <div  className={'show-only-desktop'}>
+                        <Review medium rating={5} className={'show-only-desktop'} size={26} color={"red"} />
+                            <Button className={'bolde-7'} disabled={!selectedHour} onClick={validateTime} color="primary">
+                            {content.confirm}
+                        </Button> 
+                        </div>
                         </div>
                     </div>
+                
                 </div>
-                <div className={locale === "ar" ? "doc-info-leftr" : "doc-info-right"}>
-                  
+                <div className={locale === "ar" ? "doc-info-leftr show-only-desktop" : "doc-info-right show-only-desktop"}>
+                <CalendarAvailability {...props} setSelectedHour={setDetails} />
+                <div>
+                        {!selectedHour && !selectedDate ? null : content.timeSelected + moment(selectedDate + selectedHour, 'YYYY/MM/DDHH:mm' ).calendar()}
+                    </div>
                     <div className="clinic-booking">
-                    <Link href={"/doctor/"+props.medecin.id}>
+                    {/* <Link href={"/doctor/"+props.medecin.id}>
                         <a className="view-pro-btn"> {content.seeProfile} </a>
                     </Link>
-                        {/* <Link href={"/doctor-profile/"+props.medecin.id}> <a className="view-pro-btn" >   Voir le profile </a> </Link> */}
-                        <Button onClick={() => setShowDisponibilite(props.medecin)} color="primary"> {content.seeDispo} </Button>
+
+                        <Button onClick={() => setShowDisponibilite(props.medecin)} color="primary"> {content.seeDispo} </Button> */}
                     </div>
+
+
+                    
                 </div>
             </div>
         </div>
@@ -122,7 +171,7 @@ function ShowDisponibilite (props) {
         setUserTemporary({ date: selectedDate, time: selectedHour, medecinId: props.medecin.id });
 
         return router.push({
-            pathname: `/doctor/${props.showDisponibilite.id}/appointment`,
+            pathname: `/doctor/${props.medecin.id}/appointment`,
         })
     }
 

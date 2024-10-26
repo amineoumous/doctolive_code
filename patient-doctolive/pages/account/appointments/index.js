@@ -177,14 +177,13 @@ export default function Appointments() {
 
     return (
         <div className="section-content-app">
-            <Row className="m-0 justify-content-center">
-                <h1 > {content.appointments.myapp} </h1>
-            </Row>
-            <Row className="m-0 justify-content-center">
+            <Row className="mt-5 mb-5 justify-content-center flex">
+                <span className='item-active-r title-r'> {content.appointments.myapp} </span>
                 <Link href={`/account/appointments/historique`}>
-                    <a className="link black"> {content.appointments.history} </a>
+                <span className='title-r '><a className="link black"> {content.appointments.history} </a></span>
                 </Link> 
             </Row>
+        
             
             <Row className="m-0">
                 <Col lg="3" className="apointements-left">
@@ -340,7 +339,7 @@ function CardDetailsAppointment({consultation, handleCanceledApp, content, handl
                         </Col>
                             
                         <Col lg="5" md="12" xs="12" className="order-sm-last">
-                            <MapAccess apiKey={Config.apiKey} locations={[{latitude: consultation.medecin.adress.latitude, longitude: consultation.medecin.adress.longitude}]} />
+                            <MapAccess apiKey={Config.apiKey} locations={[{latitude: consultation?.medecin?.adress?.latitude, longitude: consultation?.medecin?.adress?.longitude}]} />
                         </Col>
                         </Row>  
                         

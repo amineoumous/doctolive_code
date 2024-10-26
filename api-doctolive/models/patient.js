@@ -21,6 +21,18 @@ const patient = connection.define('patient', {
         type: Sequelize.STRING,
         allowNull: true,
     },
+    lieu_naissance: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    date_naissance: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    gender: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
     prenom: {
         type: Sequelize.STRING,
         allowNull: true,

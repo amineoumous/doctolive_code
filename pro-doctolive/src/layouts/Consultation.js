@@ -6,12 +6,13 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Navbar from "components/Navbars/ConsultationNavbars.js";
+import Navbar from "components/Navbars/ProNavbars.js";
 import Footer from "components/Footer/Footer.js";
 
 import styles from "assets/jss/layouts/ChatProStyle.js";
 import Chat from 'views/Chat/Chat'
 import Teleconsultation from 'views/Chat/Teleconsultation'
+import Sidebar from "components/Sidebar/MedecinSidebar.js";
 
 import logo from "assets/img/doctoLogo.png";
 import routes from "routes.js";
@@ -51,9 +52,19 @@ export default function MedecinPro({socket, ...rest }) {
   return (
     <main className={classes.wrapper}>
       <div className={classes.mainPanel} ref={mainPanel}>
+
+      <Sidebar
+        routes={routes.medecinPro}
+        logoText={"DOCTOLIVE"}
+     
+   
+        logo={logo}
+        {...rest}
+      />
+
         <Navbar
           {...rest}
-          logo={logo}
+
           routes={routes.medecinPro}
         />
           <div className={classes.content}>

@@ -1,0 +1,1 @@
+{"ast":null,"code":"const LocalConfig = {\n  api_path: \"http://localhost:4300\"\n};\nconst prodConfig = {\n  api_path: \"https://doctoliveapi.thesporteasy.com\"\n};\nexport default prodConfig;","map":null,"metadata":{},"sourceType":"module"}

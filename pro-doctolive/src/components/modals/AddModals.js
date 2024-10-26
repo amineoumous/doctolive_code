@@ -6,6 +6,9 @@ import {Modal, Button, Row, Col, Collapse, Alert} from 'react-bootstrap';
 
 import {MenuItem, FormControl, Select, TextField, InputLabel} from '@material-ui/core';
 import moment from 'moment'
+import { Description } from '@material-ui/icons';
+import Config from 'Config'
+import { useAuth } from "context/Auth";
 
 
   let backendUrl = "http://localhost:5000/";
@@ -14,12 +17,14 @@ import moment from 'moment'
 
 export default function AddModal(props) {
     const [dateDay, setDateDay] = useState(moment());
-    const [date_start, setDateStart] = useState(props.addEvent.slot.start !== undefined ?  moment(props.addEvent.slot.start).format("HH:mm") : "10:00");
+   // const [date_start, setDateStart] = useState(props.addEvent?.slot?.start !== undefined ?  moment(props.addEvent.slot.start).format("HH:mm") : "10:00");
+    const [date_start, setDateStart] = useState(props.currentDate);
     const [duree, setDuree] = useState("00:15");
     const [title, setTitle] = useState("");
     const [informations, setInformations] = useState("");
     const [categorie, setCategorie] = useState(1);
     const [errors, setErrors] = useState({});
+    const {UserData} = useAuth();
   
      
     const sendData = () => {
@@ -28,11 +33,14 @@ export default function AddModal(props) {
   
       let end = moment(date_start, "HH:mm").add( ellementDuree[1], "minutes")
       end.add(ellementDuree[0], "hours")
-      let start = dateDay.format("YYYY-MM-DD") +"T" + date_start +":00.356Z";
+      let start = dateDay.format("YYYY-MM-DD");     
+      let data = {title, description: informations,date:start,time:date_start  , end: dateDay.format("YYYY-MM-DD") +"T" + end.format("HH:mm:ss[.365Z]"),tarifId:categorie};
   
-      let data = {title, content: informations, start  , end: dateDay.format("YYYY-MM-DD") +"T" + end.format("HH:mm:ss[.365Z]"), categoryId:categorie};
-      Axios.post(`${backendUrl}event`, data,{headers: {'Content-Type': 'application/json'}})
-      .then(response =>{
+      Axios.post(`${Config.BACKEND_URL}/medecin/consultation`,data, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `token ${UserData.token}`,
+        }}).then(response =>{
   
         if(response){
           if (!response.data.error) { 
@@ -72,8 +80,8 @@ export default function AddModal(props) {
     return (
       <div>
     <Modal
-       show={props.addEvent.show}
-       onHide={() => props.setModalShow({show: false, slot:{}})}
+       show={props.addEveno}
+       onHide={() => props.setAddEveno(false)}
         size="lg"
         centered
         className="add-event-modal"
@@ -190,6 +198,7 @@ export default function AddModal(props) {
                     </Col>
                   </Row>
                   <Row className="mt-4">
+                  <Col className="mt-3"  md="6" lg="6" sm="12">
                   <FormControl fullWidth>
                       <InputLabel id="demo-simple-select-label">choisir une catégorie</InputLabel>
                       <Select
@@ -202,6 +211,7 @@ export default function AddModal(props) {
                     }
                   </Select>
                     </FormControl>
+                  </Col>  
                   
                   </Row>
                     {/* <p > { props.addEvent.slot.start !== undefined &&  moment(props.addEvent.slot.start).calendar()} </p> */}
@@ -225,7 +235,7 @@ export default function AddModal(props) {
           </div> 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={() => props.setModalShow({show: false, slot:{}})}>Férmer</Button>
+          <Button variant="danger" onClick={() => props.setAddEveno(false)}>Férmer</Button>
           <Button variant="success" onClick={sendData}>Enregistrer</Button>
         </Modal.Footer>
       </Modal>

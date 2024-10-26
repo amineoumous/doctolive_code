@@ -41,7 +41,7 @@ export default function DivFooter(){
                 <div className="container">
                 <Row className="justify-content-around footer-element copyright-parent">
                         <Col xs="12" md="12" lg="12" className="copyright text-left">
-                           <img className="img-fluid logo" src={"/image/Doctolive.svg"} />
+                           <img className="img-fluid logo" src={"/image/footer-logo.svg"} />
                             <p>© 2021 Doctolive tous droits réservés.  </p>
                         </Col>
                 </Row>
@@ -137,16 +137,16 @@ export default function DivFooter(){
                     <Row className="justify-content-center text-center mt-5 mb-5 reseau-sciaux">
                     
                     <a target="_blank" href="https://facebook.com/DoctoliveApp"> 
-                    <img className="img-fluid icon-logo" src={"/image/facebook-logo.svg"} />
+                    <img className="img-fluid icon-logo mt-cinq-5" src={"/image/facebook-logo.svg"} />
                     </a>
                     <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
                 
-                <img className="img-fluid icon-logo" src={"/image/instagram-icon.svg"} />
+                <img className="img-fluid icon-logo mt-cinq-5" src={"/image/instagram-icon.svg"} />
                 </a>
 
                 <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
                 
-                <img className="img-fluid icon-logo" src={"/image/linkedin-logo.svg"} />
+                <img className="img-fluid icon-logo mt-cinq-5" src={"/image/linkedin-logo.svg"} />
                 </a>
 
                 <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
@@ -156,7 +156,7 @@ export default function DivFooter(){
 
                 <a target="_blank" href="https://www.instagram.com/doctolive_officiel/?hl=fr">
                 
-                <img className="img-fluid icon-logo" src={"/image/tiktok-logo.svg"} />
+                <img className="img-fluid icon-logo mt-cinq-5" src={"/image/tiktok-logo.svg"} />
                 </a>
                           
                     </Row>
